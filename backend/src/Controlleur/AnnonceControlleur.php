@@ -54,4 +54,18 @@ class AnnonceControlleur extends DefaultControlleur
     {
         $this->model->deleteAnnonce($id);
     }
+
+
+    /**
+     * Update un utilisateur
+     * 
+     * @param int $id
+     * 
+     * @return void
+     */
+    public function update(int $id): void
+    {
+        $this->model->updateAnnonce($id, $_POST);
+        $this->jsonResponse($this->model->find($id));
+    }
 }

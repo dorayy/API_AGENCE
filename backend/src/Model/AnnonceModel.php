@@ -65,4 +65,24 @@ final class AnnonceModel extends DefaultModel
         }
         return [];
     }
+
+    /**
+     * Update une annonce de la database
+     * 
+     * @param int $id
+     * @param array $user
+     * 
+     * @return void
+     */
+    public function updateAnnonce(int $id, array $updatedAnnounce)
+    {
+        $stmt = "UPDATE $this->table SET titre=:titre, prix=:prix, description=:description , images=:images , vendu=:vendu WHERE id = $id;";
+        $prepare = $this->pdo->prepare($stmt);
+
+        if ($prepare->execute($updatedAnnounce)) {
+            return true;
+        } else {
+            $this->jsonResponse("Erreur lors de l'update de l'announce $id", 400);
+        }
+    }
 }
