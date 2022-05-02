@@ -3,7 +3,7 @@
 groupe🧮
 Doray Balassoupramanien
 Maxime Cordeiro
-Esteban Gonzales
+Esteban Gonzalez
 Louis Poulin
 
 ## Ce projet consiste à créer un site pour une agence immobilière
