@@ -27,23 +27,12 @@ CREATE TABLE annonces(
         prix        Float NOT NULL ,
         description Varchar (250) NOT NULL ,
         images      Longtext NOT NULL ,
-        vendu       Int NOT NULL
+        vendu       Int NOT NULL,
+        user_id INT NOT NULL
 	,CONSTRAINT annonces_PK PRIMARY KEY (id)
+        ,CONSTRAINT annonce_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
 )ENGINE=InnoDB;
 
-
-#------------------------------------------------------------
-# Table: user_annonces
-#------------------------------------------------------------
-
-CREATE TABLE user_annonces(
-        id      Int NOT NULL ,
-        id_user Int NOT NULL
-	,CONSTRAINT user_annonces_PK PRIMARY KEY (id,id_user)
-
-	,CONSTRAINT user_annonces_annonces_FK FOREIGN KEY (id) REFERENCES annonces(id)
-	,CONSTRAINT user_annonces_user0_FK FOREIGN KEY (id_user) REFERENCES user(id)
-)ENGINE=InnoDB;
 
 
 
@@ -61,10 +50,10 @@ INSERT INTO `user` (`id`, `username`, `email`, `roles`, `password`) VALUES
 
 
 INSERT INTO `annonces` (`id`, `titre`, `prix`, `description`, `images`, `vendu`) VALUES
-(1, 'annonces n°1' , 150000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/batiment-moderne-contre-le-ciel-323780/",0),
-(2, 'annonces n°2' , 250000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/percage-du-soleil-de-maison-en-beton-brun-pres-de-la-mer-1732414/",0),
-(3, 'annonces n°3' , 350000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/chemin-entre-les-arbres-vers-la-maison-126271/",1),
-(4, 'annonces n°4' , 450000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/maison-blanche-1475938/",0),
-(5, 'annonces n°5' , 550000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/maison-en-bois-blanc-et-gris-pres-de-champ-d-herbe-et-d-arbres-280222/",1),
-(6, 'annonces n°6' , 650000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/batiment-en-beton-blanc-1838640/",0);
+(1, 'annonces n°1' , 150000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/batiment-moderne-contre-le-ciel-323780/",0,1),
+(2, 'annonces n°2' , 250000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/percage-du-soleil-de-maison-en-beton-brun-pres-de-la-mer-1732414/",0,1),
+(3, 'annonces n°3' , 350000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/chemin-entre-les-arbres-vers-la-maison-126271/",1,2),
+(4, 'annonces n°4' , 450000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/maison-blanche-1475938/",0,2),
+(5, 'annonces n°5' , 550000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/maison-en-bois-blanc-et-gris-pres-de-champ-d-herbe-et-d-arbres-280222/",1,3),
+(6, 'annonces n°6' , 650000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/batiment-en-beton-blanc-1838640/",0,1);
 
