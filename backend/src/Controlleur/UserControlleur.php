@@ -45,6 +45,13 @@ class UserControlleur extends DefaultControlleur
         $this->jsonResponse($this->model->find($lastId));
     }
 
+    /**
+     * Update un utilisateur
+     * 
+     * @param int $id
+     * 
+     * @return void
+     */
     public function update(int $id): void
     {
         $this->model->updateUser($id, $_POST);

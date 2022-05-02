@@ -15,7 +15,7 @@ final class UserModel extends DefaultModel
     protected string $entity = "User";
 
     /**
-     * Ajoute un article a la database
+     * Ajoute un user a la database
      * 
      * @param array $user
      * @return ?int
@@ -36,6 +36,14 @@ final class UserModel extends DefaultModel
         }
     }
 
+    /**
+     * Update un user de la database
+     * 
+     * @param int $id
+     * @param array $user
+     * 
+     * @return void
+     */
     public function updateUser(int $id, array $updatedUser)
     {
         $stmt = "UPDATE $this->table SET username=:username, email=:email, roles=:roles WHERE id = $id;";
