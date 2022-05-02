@@ -36,18 +36,16 @@ final class AnnonceModel extends DefaultModel
     /**
      * Supprime une annonce a la database
      * 
-     * @param array $annonce
-     * @return ?int
+     * @param int $id
      */
-    public function deleteAnnonce(array $annonce): ?int
+    public function deleteAnnonce(int $id)
     {
-        var_dump($annonce);
-        $stmt = "DELETE FROM $this->table WHERE id = ";
+        $stmt = "DELETE FROM $this->table WHERE id = $id";
         $prepare = $this->pdo->prepare($stmt);
 
-        if ($prepare->execute($annonce)) {
+        if ($prepare->execute()) {
             // récupéré l'id du dernier ajout a la bd
-            return $this->pdo->lastInsertId($this->table);
+            $this->jsonResponse("Suppresion de l'annonce effectué", 201);
         } else {
             $this->jsonResponse("Erreur lors de la suppression d'un user", 400);
         }

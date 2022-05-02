@@ -50,9 +50,8 @@ class AnnonceControlleur extends DefaultControlleur
      * 
      * @return void
      */
-    public function delete(): void
+    public function delete(int $id): void
     {
-        $lastId = $this->model->deleteAnnonce($_POST);
-        $this->jsonResponse($this->model->find($lastId));
+        $this->model->deleteAnnonce($id);
     }
 }
