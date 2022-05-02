@@ -44,4 +44,15 @@ class AnnonceControlleur extends DefaultControlleur
         $lastId = $this->model->saveAnnonce($_POST);
         $this->jsonResponse($this->model->find($lastId));
     }
+
+    /**
+     * Supprime l'annonce d'id donnée
+     * 
+     * @return void
+     */
+    public function delete(): void
+    {
+        $lastId = $this->model->deleteAnnonce($_POST);
+        $this->jsonResponse($this->model->find($lastId));
+    }
 }
