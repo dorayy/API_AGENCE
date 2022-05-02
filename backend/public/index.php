@@ -29,4 +29,15 @@ if (isset($_SERVER["PATH_INFO"])) {
     }
 } else {
     echo "La donné que vous recherchez n'éxiste pas";
+
+    /**
+     *    $password = "GeeksforGeeks";
+     * $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+     * echo $hashed_password;
+     * if (password_verify($password, $hashed_password)) {
+     *     echo 'Password is valid!';
+     * } else {
+     *    echo 'Invalid password.';
+     * }
+     */
 }

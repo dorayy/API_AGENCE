@@ -21,8 +21,12 @@ final class UserModel extends DefaultModel
     public function saveUser(array $user): ?int
     {
         // TODO change sql
+
         $stmt = "INSERT INTO $this->table (username, email, roles, password) VALUES (:username, :email, :roles, :password)";
         $prepare = $this->pdo->prepare($stmt);
+        $hash = password_hash($user["password"], PASSWORD_BCRYPT);
+        $user["password"] = $hash;
+
 
         if ($prepare->execute($user)) {
             // récupéré l'id du dernier ajout a la bd
