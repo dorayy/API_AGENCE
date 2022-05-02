@@ -1,10 +1,10 @@
 services:
-  db:
-    container_name: db
+  database:
+    container_name: database
     image: mariadb:latest
     restart: unless-stopped
     volumes:
-      - db:/var/lib/mysql/
+      - database:/var/lib/mysql/
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: test
@@ -14,44 +14,32 @@ services:
       - 3306:3306
 
   myadmin:
-    container_name: myadmin
     image: phpmyadmin:latest
     restart: always
     depends_on:
-      - db
+      - database
     environment:
-      PMA_HOST: db
+      PMA_HOST: database
       MYSQL_ROOT_PASSWORD: root
     ports:
       - 8080:80
-
-  portainer:
-    container_name: portainer
-    image: portainer/portainer-ce:latest
-    restart: unless-stopped
-    command: -H unix:///var/run/docker.sock
-    ports:
-      - 9000:9000
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer:/data
 
   backend:
     build:
       context: backend
       dockerfile: Dockerfile
-    command: npm run start:dev
+    command: php -S 0.0.0.0:80 -t public
     ports:
-      - 8000:8000
+      - 8000:80
     restart: always
     volumes:
-      - ./backend:/var/www
+      - ./backend:/app
     depends_on:
-      - db
+      - database
     # env_file:
     #   - ./backend/.env
     environment:
-      DATABASE_HOST: db
+      DATABASE_HOST: database
 
   front:
     build:
@@ -61,7 +49,7 @@ services:
     tty: true
     stdin_open: true
     ports:
-      - 80:80
+      - 3000:80
     env_file:
       - ./front/.env
     volumes:
@@ -70,5 +58,5 @@ services:
       - backend
 
 volumes:
-  db:
+  database:
   portainer:
