@@ -30,7 +30,7 @@ CREATE TABLE annonces(
         vendu       Int NOT NULL,
         user_id INT NOT NULL
 	,CONSTRAINT annonces_PK PRIMARY KEY (id)
-        ,CONSTRAINT annonce_user_FK FOREIGN KEY (id_user) REFERENCES user(id)
+        ,CONSTRAINT annonce_user_FK FOREIGN KEY (user_id) REFERENCES user(id)
 )ENGINE=InnoDB;
 
 
@@ -49,7 +49,7 @@ INSERT INTO `user` (`id`, `username`, `email`, `roles`, `password`) VALUES
 -- --------------------------------------------------------
 
 
-INSERT INTO `annonces` (`id`, `titre`, `prix`, `description`, `images`, `vendu`) VALUES
+INSERT INTO `annonces` (`id`, `titre`, `prix`, `description`, `images`, `vendu`, `user_id`) VALUES
 (1, 'annonces n°1' , 150000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/batiment-moderne-contre-le-ciel-323780/",0,1),
 (2, 'annonces n°2' , 250000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/percage-du-soleil-de-maison-en-beton-brun-pres-de-la-mer-1732414/",0,1),
 (3, 'annonces n°3' , 350000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/chemin-entre-les-arbres-vers-la-maison-126271/",1,2),

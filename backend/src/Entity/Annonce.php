@@ -16,6 +16,7 @@ implements JsonSerializable
     private string $description;
     private string $images;
     private bool $vendu;
+    private int $user_id;
 
     public function jsonSerialize(): mixed
     {
@@ -26,6 +27,7 @@ implements JsonSerializable
             "description" => $this->description,
             "images" => $this->images,
             "vendu" => $this->vendu,
+            "user_id" => $this->user_id,
         ];
     }
 }

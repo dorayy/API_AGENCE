@@ -37,8 +37,10 @@ final class AnnonceModel extends DefaultModel
      * Supprime une annonce a la database
      * 
      * @param int $id
+     * 
+     * @
      */
-    public function deleteAnnonce(int $id)
+    public function deleteAnnonce(int $id): void
     {
         $stmt = "DELETE FROM $this->table WHERE id = $id";
         $prepare = $this->pdo->prepare($stmt);
@@ -49,5 +51,18 @@ final class AnnonceModel extends DefaultModel
         } else {
             $this->jsonResponse("Erreur lors de la suppression d'une annonce", 400);
         }
+    }
+
+    public function findByUserId(int $userId): array
+    {
+        try {
+            $stmt = "SELECT * FROM $this->table WHERE `user_id` = $userId;";
+            $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
+
+            return $query->fetchAll();
+        } catch (\PDOException $e) {
+            $this->jsonResponse($e->getMessage(), 400);
+        }
+        return [];
     }
 }
