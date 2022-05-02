@@ -32,4 +32,22 @@ final class AnnonceModel extends DefaultModel
             $this->jsonResponse("Erreur lors de l'insersion d'un user", 400);
         }
     }
+
+    /**
+     * Supprime une annonce a la database
+     * 
+     * @param int $id
+     */
+    public function deleteAnnonce(int $id)
+    {
+        $stmt = "DELETE FROM $this->table WHERE id = $id";
+        $prepare = $this->pdo->prepare($stmt);
+
+        if ($prepare->execute()) {
+            // récupéré l'id du dernier ajout a la bd
+            $this->jsonResponse("Suppresion de l'annonce effectué", 201);
+        } else {
+            $this->jsonResponse("Erreur lors de la suppression d'un user", 400);
+        }
+    }
 }
