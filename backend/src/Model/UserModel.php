@@ -35,4 +35,16 @@ final class UserModel extends DefaultModel
             $this->jsonResponse("Erreur lors de l'insersion d'un user", 400);
         }
     }
+
+    public function updateUser(int $id, array $updatedUser)
+    {
+        $stmt = "UPDATE $this->table SET username=:username, email=:email, roles=:roles WHERE id = $id;";
+        $prepare = $this->pdo->prepare($stmt);
+
+        if ($prepare->execute($updatedUser)) {
+            return true;
+        } else {
+            $this->jsonResponse("Erreur lors de l'update d'un user", 400);
+        }
+    }
 }
