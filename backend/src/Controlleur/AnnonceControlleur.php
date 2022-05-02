@@ -2,20 +2,20 @@
 
 namespace App\Controlleur;
 
-use App\Model\UserModel;
+use App\Model\AnnonceModel;
 use Core\Controlleur\DefaultControlleur;
 
-class UserControlleur extends DefaultControlleur
+class AnnonceControlleur extends DefaultControlleur
 {
     private $model;
 
     public function __construct()
     {
-        $this->model = new UserModel();
+        $this->model = new AnnonceModel();
     }
 
     /**
-     * Retoure la liste des utilisateurs
+     * Retoure la liste des annonces
      * 
      * @return void
      */
@@ -25,7 +25,7 @@ class UserControlleur extends DefaultControlleur
     }
 
     /**
-     * Retourne l'utilisateur d'id donnée
+     * Retourne l'annonce d'id donnée
      * 
      * @return void
      */
@@ -35,13 +35,13 @@ class UserControlleur extends DefaultControlleur
     }
 
     /**
-     * Créer un nouvelle utilisateur
+     * Créer une nouvelle annonce
      * 
      * @return void
      */
     public function save(): void
     {
-        $lastId = $this->model->saveUser($_POST);
+        $lastId = $this->model->saveAnnonce($_POST);
         $this->jsonResponse($this->model->find($lastId));
     }
 }
