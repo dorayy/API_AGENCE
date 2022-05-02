@@ -3,16 +3,13 @@ import { api } from "@utils/axios";
 class AuthenticationService {
   login(code) {
     return api
-      .post("/user/login", { code })
+      .post("/user", { code })
       .then((response) => {
-        if (response.data.token) {
-          localStorage.setItem(
-            "user",
-            JSON.stringify(response.data.discordUser)
-          );
-          localStorage.setItem("token", JSON.stringify(response.data.token));
-          window.location.reload();
-        }
+        // if (response.data.token) {
+        //   localStorage.setItem("user", JSON.stringify(response.data));
+        //   localStorage.setItem("token", JSON.stringify(response.data.token));
+        //   window.location.reload();
+        // }
         return response.data;
       })
       .catch((error) => {
