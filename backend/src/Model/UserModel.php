@@ -5,7 +5,9 @@ namespace App\Model;
 use Core\Model\DefaultModel;
 
 /**
- * @method Categorie[] findAll()
+ * @method User[] findAll()
+ * @method User find(int $id)
+ * @method ?int saveUser(array $user)
  */
 final class UserModel extends DefaultModel
 {
@@ -15,13 +17,11 @@ final class UserModel extends DefaultModel
     /**
      * Ajoute un article a la database
      * 
-     * @param array $article
+     * @param array $user
      * @return ?int
      */
     public function saveUser(array $user): ?int
     {
-        // TODO change sql
-
         $stmt = "INSERT INTO $this->table (username, email, roles, password) VALUES (:username, :email, :roles, :password)";
         $prepare = $this->pdo->prepare($stmt);
         $hash = password_hash($user["password"], PASSWORD_BCRYPT);
