@@ -8,20 +8,20 @@ export default function NavbarCryptolyse({ children }) {
 
   return (
     <>
-      <nav className="bg-gray-700">
+      <nav className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <NavLink to="/" className="flex items-center">
                 {/* <img className="h-12 w-12" src={logo} alt="logo" /> */}
-                <p className="text-white font-origintech text-2xl">AGENCE</p>
+                <p className="text-black font-origintech text-2xl">AGENCE</p>
               </NavLink>
               <div className="hidden md:block">
                 <div className="ml-16 flex items-center space-x-4">
                   <Link
                     label="ACCUEIL"
                     url="/"
-                    classNom="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
                   />
                 </div>
               </div>
@@ -30,7 +30,7 @@ export default function NavbarCryptolyse({ children }) {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                className="bg-black inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
