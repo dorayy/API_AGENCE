@@ -17,7 +17,13 @@ if (isset($_SERVER["PATH_INFO"])) {
                 $controlleur = new $controlleurName();
 
                 if (isset($path[4]) && is_numeric($path[4])) {
-                    $controlleur->single($path[4]);
+
+                    if (isset($path[5]) && is_string($path[5])) {
+                        $method = $path[5];
+                        $controlleur->$method($path[4]);
+                    } else {
+                        $controlleur->single($path[4]);
+                    }
                 } elseif (isset($path[4]) && is_string($path[4])) {
                     $method = $path[4];
                     $controlleur->$method();
