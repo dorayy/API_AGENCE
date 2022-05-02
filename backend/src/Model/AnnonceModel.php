@@ -47,7 +47,7 @@ final class AnnonceModel extends DefaultModel
             // récupéré l'id du dernier ajout a la bd
             $this->jsonResponse("Suppresion de l'annonce effectué", 201);
         } else {
-            $this->jsonResponse("Erreur lors de la suppression d'un user", 400);
+            $this->jsonResponse("Erreur lors de la suppression d'une annonce", 400);
         }
     }
 }

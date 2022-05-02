@@ -57,4 +57,16 @@ class UserControlleur extends DefaultControlleur
         $this->model->updateUser($id, $_POST);
         $this->jsonResponse($this->model->find($id));
     }
+
+    /**
+     * Supprime un utilisateur
+     * 
+     * @param int $id
+     * 
+     * @return void
+     */
+    public function delete(int $id): void
+    {
+        $this->model->deleteUser($id);
+    }
 }

@@ -55,4 +55,22 @@ final class UserModel extends DefaultModel
             $this->jsonResponse("Erreur lors de l'update d'un user", 400);
         }
     }
+
+    /**
+     * Supprime un utilisateur de la database
+     * 
+     * @param int $id
+     */
+    public function deleteUser(int $id)
+    {
+        $stmt = "DELETE FROM $this->table WHERE id = $id";
+        $prepare = $this->pdo->prepare($stmt);
+
+        if ($prepare->execute()) {
+            // récupéré l'id du dernier ajout a la bd
+            $this->jsonResponse("Suppresion de l'utilisateur effectué", 201);
+        } else {
+            $this->jsonResponse("Erreur lors de la suppression d'un utilisateur", 400);
+        }
+    }
 }
