@@ -22,7 +22,7 @@ final class AnnonceModel extends DefaultModel
      */
     public function saveAnnonce(array $annonce): ?int
     {
-        $stmt = "INSERT INTO $this->table (titre, prix, description, images, vendu) VALUES (:titre, :prix, :description, :images, :vendu)";
+        $stmt = "INSERT INTO $this->table (titre, prix, description, images, vendu, user_id) VALUES (:titre, :prix, :description, :images, :vendu, :user_id)";
         $prepare = $this->pdo->prepare($stmt);
 
         if ($prepare->execute($annonce)) {
