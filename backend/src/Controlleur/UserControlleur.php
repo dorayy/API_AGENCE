@@ -2,6 +2,7 @@
 
 namespace App\Controlleur;
 
+use App\Model\AnnonceModel;
 use App\Model\UserModel;
 use Core\Controlleur\DefaultControlleur;
 
@@ -68,5 +69,11 @@ class UserControlleur extends DefaultControlleur
     public function delete(int $id): void
     {
         $this->model->deleteUser($id);
+    }
+
+    public function annonce(int $id): void
+    {
+        $customModel = new AnnonceModel();
+        $this->jsonResponse($customModel->findByUserId($id));
     }
 }
