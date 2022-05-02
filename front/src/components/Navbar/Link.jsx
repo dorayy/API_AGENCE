@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Link = ({ label, url, classNom }) => {
   const classInactive = classNom;
-  const classActive = "text-white px-3 py-2 rounded-md font-medium";
+  const classActive = "text-black px-3 py-2 rounded-md font-medium";
 
   return (
     <NavLink
