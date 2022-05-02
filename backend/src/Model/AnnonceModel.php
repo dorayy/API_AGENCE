@@ -38,7 +38,7 @@ final class AnnonceModel extends DefaultModel
      * 
      * @param int $id
      * 
-     * @
+     * @return void
      */
     public function deleteAnnonce(int $id): void
     {
@@ -53,6 +53,13 @@ final class AnnonceModel extends DefaultModel
         }
     }
 
+    /**
+     * Retourne les annonces d'un utilisateur
+     * 
+     * @param int $userId
+     * 
+     * @return array
+     */
     public function findByUserId(int $userId): array
     {
         try {

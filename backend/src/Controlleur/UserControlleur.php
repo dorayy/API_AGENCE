@@ -71,6 +71,13 @@ class UserControlleur extends DefaultControlleur
         $this->model->deleteUser($id);
     }
 
+    /**
+     * Retourne les annonces d'un utilisateur
+     * 
+     * @param int $id
+     * 
+     * @return void
+     */
     public function annonce(int $id): void
     {
         $customModel = new AnnonceModel();
