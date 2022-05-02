@@ -21,7 +21,7 @@ final class UserModel extends DefaultModel
     public function saveUser(array $user): ?int
     {
         // TODO change sql
-        $stmt = "INSERT INTO $this->table (title, content, categorie_id) VALUES (:title, :content, :categorie_id)";
+        $stmt = "INSERT INTO $this->table (username, email, roles, password) VALUES (:username, :email, :roles, :password)";
         $prepare = $this->pdo->prepare($stmt);
 
         if ($prepare->execute($user)) {

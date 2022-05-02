@@ -3,9 +3,9 @@
 namespace App\Controlleur;
 
 use App\Model\UserModel;
-use Core\Controller\DefaultControlleur;
+use Core\Controlleur\DefaultControlleur;
 
-class ArticleControlleur extends DefaultControlleur
+class UserControlleur extends DefaultControlleur
 {
     private $model;
 

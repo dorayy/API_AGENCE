@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use JsonSerializable;
 
-class Article implements JsonSerializable
+class User implements JsonSerializable
 {
     // Uniquement pour php 
     // readonly met la propriété en lecture uniquement
@@ -13,7 +13,7 @@ class Article implements JsonSerializable
     private string $email;
     private string $username;
     private int $roles;
-    private int $password;
+    private string $password;
 
     public function jsonSerialize(): mixed
     {

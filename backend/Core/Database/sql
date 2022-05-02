@@ -1,0 +1,70 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: user
+#------------------------------------------------------------
+
+CREATE TABLE user(
+        id       Int  Auto_increment  NOT NULL ,
+        username Varchar (250) NOT NULL ,
+        email    Varchar (250) NOT NULL ,
+        roles    Longtext NOT NULL ,
+        password Varchar (250) NOT NULL
+	,CONSTRAINT user_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: annonces
+#------------------------------------------------------------
+
+CREATE TABLE annonces(
+        id          Int  Auto_increment  NOT NULL ,
+        titre       Varchar (250) NOT NULL ,
+        prix        Float NOT NULL ,
+        description Varchar (250) NOT NULL ,
+        images      Longtext NOT NULL ,
+        vendu       Int NOT NULL
+	,CONSTRAINT annonces_PK PRIMARY KEY (id)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: user_annonces
+#------------------------------------------------------------
+
+CREATE TABLE user_annonces(
+        id      Int NOT NULL ,
+        id_user Int NOT NULL
+	,CONSTRAINT user_annonces_PK PRIMARY KEY (id,id_user)
+
+	,CONSTRAINT user_annonces_annonces_FK FOREIGN KEY (id) REFERENCES annonces(id)
+	,CONSTRAINT user_annonces_user0_FK FOREIGN KEY (id_user) REFERENCES user(id)
+)ENGINE=InnoDB;
+
+
+
+--
+-- Déchargement des données de la table `article`
+--
+
+INSERT INTO `user` (`id`, `username`, `email`, `roles`, `password`) VALUES
+(1, 'User1', 'user1@user.com', 0 , 'voiture'),
+(2, 'User2', 'user2@user.com', 1, 'voiture'),
+(3, 'User3', 'user3@user.com', 2, 'voiture'),
+(4, 'User4', 'user4@user.com', 2, 'voiture'),
+(5, 'User5', 'user5@user.com', 1, 'voiture');
+-- --------------------------------------------------------
+
+
+INSERT INTO `annonces` (`id`, `titre`, `prix`, `description`, `images`, `vendu`) VALUES
+(1, 'annonces n°1' , 150000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/batiment-moderne-contre-le-ciel-323780/",0),
+(2, 'annonces n°2' , 250000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/percage-du-soleil-de-maison-en-beton-brun-pres-de-la-mer-1732414/",0),
+(3, 'annonces n°3' , 350000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/chemin-entre-les-arbres-vers-la-maison-126271/",1),
+(4, 'annonces n°4' , 450000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/maison-blanche-1475938/",0),
+(5, 'annonces n°5' , 550000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/maison-en-bois-blanc-et-gris-pres-de-champ-d-herbe-et-d-arbres-280222/",1),
+(6, 'annonces n°6' , 650000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://www.pexels.com/fr-fr/photo/batiment-en-beton-blanc-1838640/",0);
+
