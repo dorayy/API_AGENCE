@@ -6,9 +6,17 @@ define("ROOT", dirname(__DIR__));
 require ROOT . "/vendor/autoload.php";
 require ROOT . "/Core/Routeur/Routeur.php";
 
-// indique quels cliens peuvent se connecté a l'api
-// header("Access-Control-Allow-Origin: http://127.0.0.1:8080");
-header("Access-Control-Allow-Origin: *");
+use Core\Traits\DotEnv;
+
+(new DotEnv(ROOT . '/.env'))->load();
+
+echo $_ENV['DATABASE_HOST'];
+
+
+// (new CategorieControlleur)->index();
+// (new ArticleControlleur)->index();
+// (new CategorieControlleur)->single(1);
+// (new ArticleControlleur)->single(1);
 
 // indique les headers autorisés par l'api
 header("Access-Control-Allow-Headers: content-type, token, Authorization");
