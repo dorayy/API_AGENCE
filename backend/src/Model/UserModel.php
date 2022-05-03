@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Entity\User;
 use Core\Model\DefaultModel;
 
 /**
@@ -22,10 +23,12 @@ final class UserModel extends DefaultModel
      */
     public function saveUser(array $user): ?int
     {
-        $stmt = "INSERT INTO $this->table (username, email, roles, password) VALUES (:username, :email, :roles, :password)";
+        $stmt = "INSERT INTO $this->table (username, email, roles, password , apikey) VALUES (:username, :email, :roles, :password , :apikey)";
         $prepare = $this->pdo->prepare($stmt);
         $hash = password_hash($user["password"], PASSWORD_BCRYPT);
         $user["password"] = $hash;
+        $apikey = md5(uniqid());
+        $user['apikey'] = $apikey;
 
         if ($prepare->execute($user)) {
             // récupéré l'id du dernier ajout a la bd
@@ -106,5 +109,13 @@ final class UserModel extends DefaultModel
         } else {
             $this->jsonResponse("Invalid credentials", 400);
         }
+    }
+
+    public function findByApikey($apikey): User|false
+    {
+        $stmt = "SELECT * FROM $this->table WHERE apikey = '$apikey'";
+
+        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
+        return $query->fetch();
     }
 }
