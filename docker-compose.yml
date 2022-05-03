@@ -11,7 +11,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
     ports:
-      - 3306:3306
+      - 3307:3306
 
   myadmin:
     image: phpmyadmin:latest
@@ -33,13 +33,17 @@ services:
       - 8000:80
     restart: always
     volumes:
-      - ./backend:/app
+      - ./backend:/var/www/html
     depends_on:
       - database
-    # env_file:
-    #   - ./backend/.env
+    env_file:
+      - ./backend/.env
     environment:
-      DATABASE_HOST: database
+      PORT: 8000
+      DATABASE_HOST: "database:3307"
+      DATABASE_NAME: agence
+      DATABASE_USER: root
+      DATABASE_PASSWORD: root
 
   front:
     build:

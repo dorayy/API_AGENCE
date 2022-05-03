@@ -3,6 +3,13 @@
 define("ROOT", dirname(__DIR__));
 require ROOT . "/vendor/autoload.php";
 
+use Core\Traits\DotEnv;
+
+(new DotEnv(ROOT . '/.env'))->load();
+
+echo $_ENV['DATABASE_HOST'];
+
+
 // (new CategorieControlleur)->index();
 // (new ArticleControlleur)->index();
 // (new CategorieControlleur)->single(1);
