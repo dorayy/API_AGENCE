@@ -36,8 +36,11 @@ const Contact = () => {
 
   return (
     <div>
-      <button className="text-black" onClick={toggleModal}>
-        CONTACT
+      <button
+        className="h-12 w-64 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
+        onClick={toggleModal}
+      >
+        Prendre rendez-vous
       </button>
       {modal && (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
