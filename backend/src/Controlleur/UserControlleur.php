@@ -53,9 +53,9 @@ class UserControlleur extends DefaultControlleur
      * 
      * @return void
      */
-    public function update(int $id): void
+    public function update(int $id, array $_PUT): void
     {
-        $this->model->updateUser($id, $_POST);
+        $this->model->updateUser($id, $_PUT);
         $this->jsonResponse($this->model->find($id));
     }
 
@@ -68,7 +68,11 @@ class UserControlleur extends DefaultControlleur
      */
     public function delete(int $id): void
     {
-        $this->model->deleteUser($id);
+        if ($this->model->delete($id)) {
+            $this->jsonResponse("L'utilisateur a bien été delete");
+        } else {
+            $this->jsonResponse("La suppréssion de l'utilisateur a échouer", 400);
+        }
     }
 
     /**

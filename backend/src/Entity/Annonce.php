@@ -4,8 +4,7 @@ namespace App\Entity;
 
 use JsonSerializable;
 
-class Annonce
-implements JsonSerializable
+class Annonce implements JsonSerializable
 {
     // Uniquement pour php 
     // readonly met la propriété en lecture uniquement

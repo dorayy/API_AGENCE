@@ -56,9 +56,9 @@ class AnnonceControlleur extends DefaultControlleur
      * 
      * @return void
      */
-    public function update(int $id): void
+    public function update(int $id, array $_PUT): void
     {
-        $this->model->updateAnnonce($id, $_POST);
+        $this->model->updateAnnonce($id, $_PUT);
         $this->jsonResponse($this->model->find($id));
     }
 
@@ -69,6 +69,10 @@ class AnnonceControlleur extends DefaultControlleur
      */
     public function delete(int $id): void
     {
-        $this->model->deleteAnnonce($id);
+        if ($this->model->delete($id)) {
+            $this->jsonResponse("L'annonce a bien été delete");
+        } else {
+            $this->jsonResponse("La suppréssion de l'annonce a échouer", 400);
+        }
     }
 }
