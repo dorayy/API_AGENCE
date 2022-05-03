@@ -21,7 +21,11 @@ class AnnonceControlleur extends DefaultControlleur
      */
     public function index(): void
     {
-        $this->jsonResponse($this->model->findAll());
+        if (isset($_GET["limit"]) && is_string($_GET["limit"])) {
+            $this->jsonResponse($this->model->findLast($_GET["limit"]));
+        } else {
+            $this->jsonResponse($this->model->findAll());
+        }
     }
 
     /**

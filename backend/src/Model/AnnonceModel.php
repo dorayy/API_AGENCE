@@ -15,6 +15,25 @@ final class AnnonceModel extends DefaultModel
     protected string $entity = "Annonce";
 
     /**
+     * Retour les x dernieres annonces du site
+     * 
+     * @param int $limit
+     * 
+     * @return array<int,object>
+     */
+    public function findLast(int $limit): array
+    {
+        try {
+            $stmt = "SELECT * FROM $this->table ORDER BY id desc LIMIT $limit;";
+            $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "App\Entity\\$this->entity");
+
+            return $query->fetchAll();
+        } catch (\PDOException $e) {
+            $this->jsonResponse($e->getMessage(), 400);
+        }
+    }
+
+    /**
      * Ajoute une annonce a la database
      * 
      * @param array $annonce
