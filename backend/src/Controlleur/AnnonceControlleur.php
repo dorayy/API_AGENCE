@@ -46,17 +46,6 @@ class AnnonceControlleur extends DefaultControlleur
     }
 
     /**
-     * Supprime l'annonce d'id donnée
-     * 
-     * @return void
-     */
-    public function delete(int $id): void
-    {
-        $this->model->deleteAnnonce($id);
-    }
-
-
-    /**
      * Update un utilisateur
      * 
      * @param int $id
@@ -67,5 +56,15 @@ class AnnonceControlleur extends DefaultControlleur
     {
         $this->model->updateAnnonce($id, $_POST);
         $this->jsonResponse($this->model->find($id));
+    }
+
+    /**
+     * Supprime l'annonce d'id donnée
+     * 
+     * @return void
+     */
+    public function delete(int $id): void
+    {
+        $this->model->deleteAnnonce($id);
     }
 }

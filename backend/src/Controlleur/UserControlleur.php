@@ -40,7 +40,7 @@ class UserControlleur extends DefaultControlleur
      * 
      * @return void
      */
-    public function register(): void
+    public function save(): void
     {
         $lastId = $this->model->saveUser($_POST);
         $this->jsonResponse($this->model->find($lastId));
