@@ -32,7 +32,7 @@ const index = () => {
             min="100"
             max="10000000"
             placeholder="Budget en €"
-            className=" w-32 p-3 rounded-2xl border-2 border-blue-500"
+            className="w-32 p-3 rounded-2xl border-2 border-blue-500"
           />
         </div>
         <button className="h-12 w-2/6 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50">

@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Link = ({ label, url, classNom }) => {
-  const classInactive = classNom;
-  const classActive = "text-black px-3 py-2 rounded-md font-medium";
+const Link = ({ label, url }) => {
+  const classInactive = "text-black p-2";
+  const classActive = "text-blue-500 p-2";
 
   return (
     <NavLink
