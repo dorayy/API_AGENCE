@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function NavbarCryptolyse() {
   return (
     <>
-      <footer className="text-center bg-gradient-to-r from-blue-600 to-blue-500 text-white mt-5">
+      <footer className="text-center bg-gradient-to-r from-blue-600 to-blue-500 text-white">
         <div className="w-full px-6 pt-6">
           <div className="w-full flex justify-center align-center mb-6">
             <a
