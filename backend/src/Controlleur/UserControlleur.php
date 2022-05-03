@@ -53,10 +53,11 @@ class UserControlleur extends DefaultControlleur
      * 
      * @return void
      */
-    public function update(int $id): void
+    public function login(): void
     {
-        $this->model->updateUser($id, $_POST);
-        $this->jsonResponse($this->model->find($id));
+        $apikey = md5(uniqid());
+
+        $this->model->login($_POST, $apikey);
     }
 
     /**

@@ -12,10 +12,13 @@ class Routeur
                 if (isset($path[3])) {
                     $controlleurName = "App\Controlleur\\" . ucfirst($path[3]) . "Controlleur";
                     $controlleur = new $controlleurName();
-
                     $id = null;
                     if (isset($path[4]) && is_numeric($path[4])) {
                         $id = $path[4];
+                    } elseif (isset($path[4]) && is_string($path[4])) {
+                        $method = $path[4];
+                        $controlleur->$method();
+                        die();
                     }
                     if (isset($path[5]) && is_string($path[5])) {
                         $method = $path[5];
