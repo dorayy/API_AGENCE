@@ -25,10 +25,13 @@ const Home = () => {
                 Nous sommes fière de vous acceuillir parmis nous, faites comme
                 chez vous, pour trouver votre chez vous.
               </p>
+              <button className="h-12 w-2/6 mt-10 text-black rounded-2xl bg-white shadow-lg shadow-gray-600">
+                Découvrir
+              </button>
             </div>
             <div className="w-6/12"></div>
           </div>
-          <div className="w-4/5 flex justify-center items-center mt-36">
+          <div className="w-4/5 flex justify-center items-center mt-32">
             <div className="w-4/5 h-60 rounded-2xl shadow-xl shadow-blue-500/50 bg-white p-4">
               <div className="w-full h-full flex flex-col justify-center items-center">
                 <h6 className="mb-5 text-lg font-semibold text-black">
