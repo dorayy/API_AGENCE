@@ -11,6 +11,7 @@ CREATE TABLE user(
         id       Int  Auto_increment  NOT NULL ,
         username Varchar (250) NOT NULL ,
         email    Varchar (250) NOT NULL ,
+        token    Varchar (250) NULL ,
         roles    Longtext NOT NULL ,
         password Varchar (250) NOT NULL
 	,CONSTRAINT user_PK PRIMARY KEY (id)
@@ -40,12 +41,12 @@ CREATE TABLE annonces(
 -- Déchargement des données de la table `article`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `roles`, `password`) VALUES
-(1, 'User1', 'user1@user.com', 0 , 'voiture'),
-(2, 'User2', 'user2@user.com', 1, 'voiture'),
-(3, 'User3', 'user3@user.com', 2, 'voiture'),
-(4, 'User4', 'user4@user.com', 2, 'voiture'),
-(5, 'User5', 'user5@user.com', 1, 'voiture');
+INSERT INTO `user` (`id`, `username`, `email`, `token`, `roles`, `password`) VALUES
+(1, 'User1', 'user1@user.com',NULL, 0 , 'voiture'),
+(2, 'User2', 'user2@user.com',NULL, 1, 'voiture'),
+(3, 'User3', 'user3@user.com',NULL, 2, 'voiture'),
+(4, 'User4', 'user4@user.com',NULL, 2, 'voiture'),
+(5, 'User5', 'user5@user.com',NULL, 1, 'voiture');
 -- --------------------------------------------------------
 
 
