@@ -1,5 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
+import Filter from "@components/Filter";
 import Carousel from "@components/Carousel";
 import Footer from "@components/Footer";
 
@@ -9,6 +11,7 @@ import Ellipse from "@assets/images/Ellipse.svg";
 import Ellipse2 from "@assets/images/Ellipse2.svg";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="relative flex justify-center w-full">
@@ -25,54 +28,19 @@ const Home = () => {
                 Nous sommes fière de vous acceuillir parmis nous, faites comme
                 chez vous, pour trouver votre chez vous.
               </p>
-              <button className="h-12 w-2/6 mt-10 text-black rounded-2xl bg-white shadow-lg shadow-gray-600">
+              <button
+                onClick={() => {
+                  navigate("/articles");
+                }}
+                className="h-12 w-2/6 mt-10 text-black rounded-2xl bg-white shadow-lg shadow-gray-600"
+              >
                 Découvrir
               </button>
             </div>
             <div className="w-6/12"></div>
           </div>
           <div className="w-4/5 flex justify-center items-center mt-32">
-            <div className="w-4/5 h-60 rounded-2xl shadow-xl shadow-blue-500/50 bg-white p-4">
-              <div className="w-full h-full flex flex-col justify-center items-center">
-                <h6 className="mb-5 text-lg font-semibold text-black">
-                  Affinez votre recherche
-                </h6>
-                <div className="w-full flex justify-between items-center">
-                  <select className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500">
-                    <option className="text-gray-500" selected>
-                      Type de bien
-                    </option>
-                    <option value="Maison" className="text-black">
-                      Maison
-                    </option>
-                    <option value="Appartement" className="text-black">
-                      Appartement
-                    </option>
-                  </select>
-                  <select className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500">
-                    <option className="text-gray-500" selected>
-                      Type de contrat
-                    </option>
-                    <option value="Achat" className="text-black">
-                      Achat
-                    </option>
-                    <option value="Location" className="text-black">
-                      Location
-                    </option>
-                  </select>
-                  <input
-                    type="number"
-                    min="100"
-                    max="10000000"
-                    placeholder="Budget en €"
-                    className=" w-32 p-3 rounded-2xl border-2 border-blue-500"
-                  />
-                </div>
-                <button className="h-12 w-2/6 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50">
-                  Rechercher
-                </button>
-              </div>
-            </div>
+            <Filter />
           </div>
         </div>
       </div>
@@ -94,7 +62,12 @@ const Home = () => {
               Nous sommes fière de vous acceuillir parmis nous, faites comme
               chez vous, pour trouver votre chez vous.
             </p>
-            <button className="h-12 w-2/6 mt-10 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50">
+            <button
+              onClick={() => {
+                navigate("/articles");
+              }}
+              className="h-12 w-2/6 mt-10 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
+            >
               Découvrir
             </button>
           </div>
