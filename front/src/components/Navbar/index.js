@@ -24,6 +24,11 @@ export default function NavbarCryptolyse({ children }) {
                       url="/"
                       className="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
                     />
+                    <Link
+                      label="ARTICLES"
+                      url="/articles"
+                      className="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                    />
                   </div>
                 </div>
               </div>
