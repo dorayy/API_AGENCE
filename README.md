@@ -1,10 +1,76 @@
 # Projet Agence immobilière
 
-groupe🧮
-Doray Balassoupramanien
-Maxime Cordeiro
-Esteban Gonzalez
+groupe:  
+Doray Balassoupramanien  
+Maxime Cordeiro  
+Esteban Gonzalez  
 Louis Poulin
+
+TODO:
+
+- [ ] Les pages
+  - [ ] Page d'accueil
+    - [ ] présentation de l'entreprise
+    - [ ] les 5 derniers biens ajoutés
+    - [ ] liens vers page des biens + filtre déjà en place (N'afficher que les appartements, les maisons, les biens disponible à l'achat ou la location).
+    - [ ] Chaque bien a un bouton voir plus pour accéder à la page du bien.
+  - [ ] Page des biens
+    - [ ] liste tous les biens encore disponible de l'agence.
+    - [ ] filtres pour trier les biens en fonction des recherces des utilisateurs
+      - [ ] appartement/maison
+      - [ ] location/achat
+      - [ ] tranche de prix
+      - [ ] tranche de superficie
+      - [ ] nombre de pièces
+  - [ ] Page d'un bien
+    - [ ] Au clic sur un bien on arrive sur sa page.
+    - [ ] Celle-ci va afficher toutes les photos du bien
+    - [ ] ses informations
+    - [ ] les options qui sont liées
+    - [ ] formulaire de contact
+      - [ ] un input pour une date de rendez-vous.
+      - [ ] envoyer un mail à l'agent immobilier gérant le bien
+      - [ ] stocker ce rdv en base de données (on ne gère pas le planning dans ce tp, ce n'est pas grave s'il y a 2 rendez-vous en même temps).
+- [ ] Connexion
+  - [ ] Les agents immobiliers peuvent se connecter.
+  - [ ] Ils pourront ainsi ajouter un bien
+  - [ ] modifier les biens qu'ils gèrent
+  - [ ] mettre un bien en vendu ou loué
+  - [ ] le supprimer.
+  - [ ] Ils pourront également consulter leurs rendez-vous
+  - [ ] et les annuler au besoin.
+- [ ] Inscription
+  - [ ] Seul le gérant de l'agence peut inscrire des personnes
+  - [ ] Il inscrira les agents immobiliers ou d'autres personnes.
+  - [ ] Il attribue les rôles aux utilisateurs.
+- [ ] Les rôles
+  - [ ] Anonyme
+  - [ ] Les clients ne s'inscrivent pas
+  - [ ] peuvent consulter les biens et envoyer une demande de visite
+  - [ ] ROLE_USER
+    - [ ] Ce rôle est dédié aux agents immobiliers.
+    - [ ] Ils peuvent consulter les biens,
+    - [ ] ajouter des biens
+    - [ ] gérer les biens qui leurs sont attribués
+      - [ ] mise à jour
+      - [ ] suppression
+      - [ ] marqué comme vendu ou loué.
+    - [ ] Ils peuvent également consulter et gérer leurs render-vous.
+    - [ ] Ils peuvent se rendre sur sa fiche pour modifier son mot de passe et ses informations.
+- [ ] ROLE_ADMIN
+  - [ ] C'est le gérant de l'agence.
+  - [ ] Il voit tous les biens et peut tous les gérer.
+  - [ ] Il peut inscrire des collaborateurs
+  - [ ] gérer les comptes
+    - [ ] modification d'information
+    - [ ] suppresion de compte
+    - [ ] ...
+
+Sur cette page il y a des filtres pour trier les biens en fonction des recherces des utilisateurs (appartement/maison, location/achat, tranche de prix, tranche de superficie, nombre de pièces, ...)
+
+Cette page possède une pagination. Les biens sont divisés en groupes de 10 ou 20 comme vous le souhaitez.
+
+Chaque bien a un bouton voir plus pour accéder à la page du bien.
 
 ## Ce projet consiste à créer un site pour une agence immobilière
 
