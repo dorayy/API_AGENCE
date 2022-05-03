@@ -15,6 +15,7 @@ class User implements JsonSerializable
     private int $roles;
     private string $password;
     private ?string $token;
+    private ?string $apikey;
 
     public function jsonSerialize(): mixed
     {
@@ -23,7 +24,8 @@ class User implements JsonSerializable
             "email" => $this->email,
             "username" => $this->username,
             "roles" => $this->roles,
-            "token" => $this->token
+            "token" => $this->token,
+            'apikey' => $this->apikey
         ];
     }
 
@@ -131,6 +133,24 @@ class User implements JsonSerializable
     public function setToken(?string $token): self
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of apikey
+     */
+    public function getApikey(): ?string
+    {
+        return $this->apikey;
+    }
+
+    /**
+     * Set the value of apikey
+     */
+    public function setApikey(?string $apikey): self
+    {
+        $this->apikey = $apikey;
 
         return $this;
     }
