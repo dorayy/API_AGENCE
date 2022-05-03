@@ -6,7 +6,6 @@ class Routeur
 {
     public static function routeur()
     {
-
         if (isset($_SERVER["PATH_INFO"])) {
             $path = explode("/", $_SERVER["PATH_INFO"]);
             if (isset($path[1]) && $path[1] == "api" && isset($path[2]) && $path[2] == "v2") {

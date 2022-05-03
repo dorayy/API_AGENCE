@@ -27,7 +27,6 @@ final class UserModel extends DefaultModel
         $hash = password_hash($user["password"], PASSWORD_BCRYPT);
         $user["password"] = $hash;
 
-
         if ($prepare->execute($user)) {
             // récupéré l'id du dernier ajout a la bd
             return $this->pdo->lastInsertId($this->table);
@@ -98,7 +97,6 @@ final class UserModel extends DefaultModel
             $userId = $user->getId();
             $stmt = "UPDATE $this->table SET token= '$apikey' WHERE id = $userId;";
             $prepare = $this->pdo->prepare($stmt);
-
 
             if ($prepare->execute()) {
                 return  $this->jsonResponse($user, 201);
