@@ -12,7 +12,7 @@ const Home = () => {
           src={HomeBanner}
           alt="Home Banner"
         />
-        <div className="w-4/5 flex flex-col justify-center items-center py-56 z-50">
+        <div className="w-4/5 flex flex-col justify-center items-center py-56 z-40">
           <div className="w-full flex justify-center items-center">
             <div className="w-6/12 flex flex-col justify-center items-start text-white">
               <h1 className="text-7xl font-semibold">Bienvenue chez vous !</h1>
