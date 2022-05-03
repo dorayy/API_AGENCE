@@ -10,7 +10,7 @@ export default function NavbarCryptolyse({ children }) {
     <>
       <div className="fixed z-50 w-full mt-5 m-auto flex items-center justify-center">
         <nav className="w-4/5">
-          <div className="w-full mx-auto px-6 sm:px-6 lg:px-8 rounded-2xl bg-white shadow-lg shadow-blue-500/50">
+          <div className="w-full mx-auto p-4 sm:px-6 lg:px-8 rounded-2xl bg-white shadow-lg shadow-blue-500/50">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <NavLink to="/" className="flex items-center">
