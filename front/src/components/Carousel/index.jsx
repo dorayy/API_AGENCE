@@ -13,7 +13,7 @@ const Index = () => {
         stopOnHover
         showStatus={false}
         interval={2000}
-        className="w-900 p-4 mt-5 flex flex-col justify-center align-center"
+        className="w-900 p-4 mt-5 flex flex-col justify-center items-center"
       >
         <div className="m-auto mt-10 mb-10 flex justify-center align-center w-95 h-400">
           <div className="w-full bg-white rounded-2xl shadow-lg shadow-blue-500/50 overflow-hidden">
@@ -22,7 +22,7 @@ const Index = () => {
                 <img
                   src="https://picsum.photos/200/300?random=1"
                   alt=""
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-cover"
                 />
               </div>
               <div className="w-6/12 h-400 flex justify-center items-center">
