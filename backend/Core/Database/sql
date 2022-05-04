@@ -35,7 +35,17 @@ CREATE TABLE annonces(
         ,CONSTRAINT annonce_user_FK FOREIGN KEY (user_id) REFERENCES user(id)
 )ENGINE=InnoDB;
 
-
+CREATE TABLE meetup(
+        id              INT     Auto_increment  NOT NULL,
+        date            date    NOT NULL,
+        annonce_id      INT     NOT NULL,
+        email           Varchar(255)    NOT NULL,
+        telephone       Varchar(255)    NOT NULL,
+        nom             Varchar(255)    NOT NULL,
+        prenom          Varchar(255)    NOT NULL,
+        CONSTRAINT meetup_PK PRIMARY KEY (id),
+        CONSTRAINT meetup_annonce_FK FOREIGN KEY (annonce_id) REFERENCES annonces(id)
+);
 
 
 --

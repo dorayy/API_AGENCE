@@ -3,6 +3,7 @@
 namespace App\Controlleur;
 
 use App\Model\AnnonceModel;
+use App\Model\MeetupModel;
 use Core\Controlleur\DefaultControlleur;
 
 class AnnonceControlleur extends DefaultControlleur
@@ -56,9 +57,9 @@ class AnnonceControlleur extends DefaultControlleur
      * 
      * @return void
      */
-    public function update(int $id): void
+    public function update(int $id, array $_PUT): void
     {
-        $this->model->updateAnnonce($id, $_POST);
+        $this->model->updateAnnonce($id, $_PUT);
         $this->jsonResponse($this->model->find($id));
     }
 
@@ -69,6 +70,32 @@ class AnnonceControlleur extends DefaultControlleur
      */
     public function delete(int $id): void
     {
-        $this->model->deleteAnnonce($id);
+        if ($this->model->delete($id)) {
+            $this->jsonResponse("L'annonce a bien été delete");
+        } else {
+            $this->jsonResponse("La suppréssion de l'annonce a échouer", 400);
+        }
+    }
+
+    /**
+     * Créer un meet up pour l'annonce
+     * 
+     * @param int id
+     * 
+     * @return void
+     */
+    public function meetup(int $id): void
+    {
+        if (isset($_POST)) {
+            $customModel = new MeetupModel();
+
+            $meetup = $_POST;
+            $meetup["annonce_id"] = $id;
+
+            $lastId = $customModel->saveMeetup($meetup);
+            $this->jsonResponse($customModel->find($lastId));
+        } else {
+            $this->jsonResponse("Aucune donné pour créer un meet up", 400);
+        }
     }
 }

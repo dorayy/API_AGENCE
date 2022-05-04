@@ -3,6 +3,7 @@
 namespace App\Controlleur;
 
 use App\Model\AnnonceModel;
+use App\Model\MeetupModel;
 use App\Model\UserModel;
 use Core\Controlleur\DefaultControlleur;
 
@@ -53,6 +54,12 @@ class UserControlleur extends DefaultControlleur
      * 
      * @return void
      */
+    public function update(int $id, array $_PUT): void
+    {
+        $this->model->updateUser($id, $_PUT);
+        $this->jsonResponse($this->model->find($id));
+    }
+
     public function login(): void
     {
         $apikey = md5(uniqid());
@@ -69,7 +76,11 @@ class UserControlleur extends DefaultControlleur
      */
     public function delete(int $id): void
     {
-        $this->model->deleteUser($id);
+        if ($this->model->delete($id)) {
+            $this->jsonResponse("L'utilisateur a bien été delete");
+        } else {
+            $this->jsonResponse("La suppréssion de l'utilisateur a échouer", 400);
+        }
     }
 
     /**
@@ -83,5 +94,23 @@ class UserControlleur extends DefaultControlleur
     {
         $customModel = new AnnonceModel();
         $this->jsonResponse($customModel->findByUserId($id));
+    }
+
+    /**
+     * Retourne les meet up
+     */
+    public function meetup(int $id): void
+    {
+        $customAnnonceModel = new AnnonceModel();
+        $customMeetupModel = new MeetupModel();
+        $annonces = $customAnnonceModel->findByUserId($id);
+        $this->jsonResponse($annonces[0]->getId());
+        $meetups = [];
+        foreach ($annonces as $annonce) {
+            $submeetups = $customMeetupModel->findByAnnonceId($annonce->getId());
+            array_push($meetups, $submeetups);
+        }
+
+        $this->jsonResponse($meetups);
     }
 }
