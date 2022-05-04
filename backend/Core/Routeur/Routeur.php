@@ -31,6 +31,9 @@ class Routeur
                             }
                             break;
                         case 'POST':
+
+                            var_dump($_POST);
+                            die();
                             if (!empty($_POST)) {
                                 if (isset($path[5]) && is_string($path[5])) {
                                     $method = $path[5];
