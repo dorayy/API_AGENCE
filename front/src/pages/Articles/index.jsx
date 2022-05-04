@@ -23,7 +23,7 @@ const Articles = () => {
   });
   return (
     <>
-      <div className="w-full flex flex-col justify-center items-center pt-36 pb-10">
+      <div className="w-full min-h-screen flex flex-col justify-center items-center pt-36 pb-10">
         <div className="w-4/5 flex justify-center items-center">
           <FilterArticles />
         </div>

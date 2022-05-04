@@ -24,7 +24,7 @@ const Home = () => {
   });
   return (
     <>
-      <div className="flex justify-center items-center w-full">
+      <div className="flex justify-center items-center w-full min-h-screen">
         <div className="w-4/5 flex justify-center items-center py-44">
           <div className="w-1/2 flex justify-center items-center bg-gray-600 rounded-2xl overflow-hidden">
             <img

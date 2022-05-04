@@ -31,7 +31,9 @@ const Index = ({ data }) => {
                 </div>
                 <div className="w-6/12 h-400 flex justify-center items-center">
                   <div className="w-4/5 p-0 flex flex-col justify-start items-start">
-                    <h6 className="text-3xl text-left">{data.titre}</h6>
+                    <h6 className="text-3xl text-left first-letter:uppercase">
+                      {data.titre}
+                    </h6>
                     <strong className="text-xl mt-5 text-left">
                       {data.prix} €
                     </strong>
