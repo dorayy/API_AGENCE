@@ -104,7 +104,6 @@ class UserControlleur extends DefaultControlleur
         $customAnnonceModel = new AnnonceModel();
         $customMeetupModel = new MeetupModel();
         $annonces = $customAnnonceModel->findByUserId($id);
-        $this->jsonResponse($annonces[0]->getId());
         $meetups = [];
         foreach ($annonces as $annonce) {
             $submeetups = $customMeetupModel->findByAnnonceId($annonce->getId());

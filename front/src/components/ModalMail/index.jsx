@@ -57,6 +57,7 @@ const Contact = () => {
             <input
               type="text"
               name="fullName"
+              placeholder="Nom Prénom"
               className="w-full p-3 mt-2 rounded-2xl border-2 border-blue-500"
               required
             />
@@ -64,21 +65,24 @@ const Contact = () => {
             <input
               type="email"
               name="email"
-              className="w-full p-3 mt-2 rounded-2xl border-2 border-blue-500"
+              placeholder="Email"
+              className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
             <label>Objet</label>
             <input
               type="text"
               name="object"
-              className="w-full p-3 mt-2 rounded-2xl border-2 border-blue-500"
+              placeholder="Objet"
+              className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
             <label>Message</label>
             <textarea
               type="text"
               name="message"
-              className="w-full p-3 mt-2 rounded-2xl border-2 border-blue-500"
+              placeholder="Message"
+              className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
             <div className="flex justify-center items-center w-full">

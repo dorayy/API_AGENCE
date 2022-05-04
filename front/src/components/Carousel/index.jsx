@@ -14,7 +14,7 @@ const Index = ({ data }) => {
         stopOnHover
         showStatus={false}
         interval={2000}
-        className="w-900 p-4 mt-5 flex flex-col justify-center align-center"
+        className="w-900 p-4 mt-5 flex flex-col justify-center items-center"
       >
         {data.map((data) => (
           <div
@@ -29,7 +29,6 @@ const Index = ({ data }) => {
                     alt=""
                     className="h-full w-full object-contain"
                   />
-                </div>
                 <div className="w-6/12 h-400 flex justify-center items-center">
                   <div className="w-4/5 p-0 flex flex-col justify-start items-start">
                     <h6 className="text-3xl text-left">{data.titre}</h6>

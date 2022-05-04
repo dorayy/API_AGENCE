@@ -12,26 +12,40 @@ export default function NavbarCryptolyse({ children }) {
       <div className="fixed z-50 w-full mt-5 m-auto flex items-center justify-center">
         <nav className="w-4/5">
           <div className="w-full mx-auto p-4 sm:px-6 lg:px-8 rounded-2xl bg-white shadow-lg shadow-blue-500/50">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex items-center">
+            <div className="flex items-center h-16 w-full">
+              <div className="flex justify-between items-center w-full">
                 <NavLink to="/" className="flex items-center">
-                  {/* <img className="h-12 w-12" src={logo} alt="logo" /> */}
                   <p className="text-black font-origintech text-2xl">AGENCE</p>
                 </NavLink>
-                <div className="hidden md:block">
-                  <div className="ml-16 flex items-center">
-                    <Link label="ACCUEIL" url="/" className="text-black p-2" />
-                    <Link
-                      label="LES BIENS"
-                      url="/articles"
-                      className="text-black p-2"
-                    />
-                    <Link
-                      label="PRODUIT"
-                      url="/produit"
-                      className="text-black p-2"
-                    />
-                    <Contact />
+                <div className="hidden w-full md:block">
+                  <div className="flex justify-between items-center">
+                    <div className="ml-16 flex items-center">
+                      <Link
+                        label="ACCUEIL"
+                        url="/"
+                        className="text-black p-2"
+                      />
+                      <Link
+                        label="LES BIENS"
+                        url="/articles"
+                        className="text-black p-2"
+                      />
+                      <Link
+                        label="PRODUIT"
+                        url="/produit"
+                        className="text-black p-2"
+                      />
+                    </div>
+                    <div className="flex items-center">
+                      <div className="mr-4 flex items-center">
+                        <Contact />
+                      </div>
+                      <Link
+                        label="CONNEXION"
+                        url="/connexion"
+                        className="text-black p-2"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
