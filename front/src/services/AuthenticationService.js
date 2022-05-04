@@ -1,15 +1,16 @@
 import { api } from "@utils/axios";
 
 class AuthenticationService {
-  login(code) {
+  // body: email, password
+  login(body) {
     return api
-      .post("/user", { code })
+      .post("/user/login", { body })
       .then((response) => {
-        // if (response.data.token) {
-        //   localStorage.setItem("user", JSON.stringify(response.data));
-        //   localStorage.setItem("token", JSON.stringify(response.data.token));
-        //   window.location.reload();
-        // }
+        if (response.data) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+          // localStorage.setItem("token", JSON.stringify(response.data.token));
+          window.location.reload();
+        }
         return response.data;
       })
       .catch((error) => {
