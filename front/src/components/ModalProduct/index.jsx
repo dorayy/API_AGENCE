@@ -43,7 +43,10 @@ const Contact = () => {
         Prendre rendez-vous
       </button>
       {modal && (
-        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
+        <div
+          className="fixed top-0 left-0 w-full h-full flex justify-center items-center"
+          id="modal*"
+        >
           <div
             className="fixed top-0 left-0 w-full h-full bg-black opacity-30"
             onClick={toggleModal}

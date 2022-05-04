@@ -2,7 +2,7 @@ import React from "react";
 
 const index = () => {
   return (
-    <div className="w-4/5 h-60 rounded-2xl shadow-xl shadow-blue-500/50 bg-white p-4">
+    <div className="w-4/5 h-60 rounded-2xl shadow-xl shadow-blue-500/50 bg-white p-4  -z-10">
       <div className="w-full h-full flex flex-col justify-center items-center">
         <h6 className="mb-5 text-lg font-semibold text-black">
           Affinez votre recherche

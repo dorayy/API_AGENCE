@@ -30,11 +30,6 @@ export default function NavbarCryptolyse({ children }) {
                         url="/articles"
                         className="text-black p-2"
                       />
-                      <Link
-                        label="PRODUIT"
-                        url="/produit"
-                        className="text-black p-2"
-                      />
                     </div>
                     <div className="flex items-center">
                       <div className="mr-4 flex items-center">
