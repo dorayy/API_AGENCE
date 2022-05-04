@@ -37,7 +37,7 @@ class Routeur
                                     $controlleur->$method($id);
                                 } else {
                                     if (isset($path[4]) && is_string($path[4])) {
-                                        $method = $path[2];
+                                        $method = $path[4];
 
                                         if (method_exists($controlleur, $method)) {
                                             $controlleur->$method($_POST);

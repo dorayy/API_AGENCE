@@ -5,6 +5,7 @@ namespace App\Controlleur;
 use App\Model\AnnonceModel;
 use App\Model\MeetupModel;
 use App\Model\UserModel;
+use App\Security\JwTokenSecurity;
 use Core\Controlleur\DefaultControlleur;
 
 class UserControlleur extends DefaultControlleur
@@ -37,17 +38,6 @@ class UserControlleur extends DefaultControlleur
     }
 
     /**
-     * Créer un nouvelle utilisateur
-     * 
-     * @return void
-     */
-    public function save(): void
-    {
-        $lastId = $this->model->saveUser($_POST);
-        $this->jsonResponse($this->model->find($lastId));
-    }
-
-    /**
      * Update un utilisateur
      * 
      * @param int $id
@@ -60,7 +50,7 @@ class UserControlleur extends DefaultControlleur
         $this->jsonResponse($this->model->find($id));
     }
 
-    public function login(): void
+    public function loginDoray(): void
     {
         $apikey = md5(uniqid());
 
@@ -101,6 +91,7 @@ class UserControlleur extends DefaultControlleur
      */
     public function meetup(int $id): void
     {
+        $this->isGranted(self::USER_ROLE);
         $customAnnonceModel = new AnnonceModel();
         $customMeetupModel = new MeetupModel();
         $annonces = $customAnnonceModel->findByUserId($id);
@@ -111,5 +102,45 @@ class UserControlleur extends DefaultControlleur
         }
 
         $this->jsonResponse($meetups);
+    }
+
+    /**
+     * Créer un nouvelle utilisateur
+     * 
+     * @return void
+     */
+    public function save(): void
+    {
+        if (isset($_POST["username"], $_POST["email"], $_POST["password"])) {
+            $user = $_POST;
+            $user["password"] = password_hash($user["password"], PASSWORD_DEFAULT);
+            $user["roles"] = 0;
+            $lastId = $this->model->saveUser($user);
+            $this->jsonResponse($this->model->find($lastId));
+        }
+    }
+
+    /**
+     * Se connecter
+     * 
+     * @param array $userData
+     * 
+     * @return void
+     */
+    public function login(array $userData): void
+    {
+        // vérifier qu'on a bien le password
+        $user = $this->model->getUserByEmail($userData["email"]);
+        if ($user) {
+            var_dump($user->getPassword());
+            if (password_verify($userData["password"], $user->getPassword())) {
+                // génération du jwt token
+                $this->jsonResponse((new JwTokenSecurity)->generateToken($user->jsonSerialize()));
+            } else {
+                $this->jsonResponse("Mot de passe incorrect", 400);
+            }
+        } else {
+            $this->jsonResponse("Cet utilisateur n'éxiste pas", 400);
+        }
     }
 }
