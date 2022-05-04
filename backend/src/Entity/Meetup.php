@@ -8,6 +8,7 @@ use JsonSerializable;
 class Meetup implements JsonSerializable
 {
     private int $id;
+    // timestamps
     private int $date;
     private int $annonce_id;
     private string $email;
