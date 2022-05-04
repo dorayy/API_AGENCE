@@ -25,10 +25,11 @@ const Index = ({ data }) => {
               <div className="flex justify-center align-center">
                 <div className="w-6/12">
                   <img
-                    src="https://picsum.photos/200/300?random=1"
-                    alt=""
-                    className="h-full w-full object-contain"
+                    src={data.images}
+                    alt={data.titre}
+                    className="h-full w-full object-cover"
                   />
+                </div>
                 <div className="w-6/12 h-400 flex justify-center items-center">
                   <div className="w-4/5 p-0 flex flex-col justify-start items-start">
                     <h6 className="text-3xl text-left">{data.titre}</h6>
