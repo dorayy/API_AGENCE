@@ -40,9 +40,9 @@ const Contact = () => {
         CONTACT
       </button>
       {modal && (
-        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-80">
           <div
-            className="fixed top-0 left-0 w-full h-full bg-black opacity-30"
+            className="fixed top-0 left-0 w-full h-full bg-black opacity-30  z-80"
             onClick={toggleModal}
           ></div>
           <form

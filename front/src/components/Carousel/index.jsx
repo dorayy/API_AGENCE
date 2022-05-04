@@ -4,7 +4,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 const Index = ({ data }) => {
-  console.log(data);
   const navigate = useNavigate();
   return (
     <>
@@ -39,7 +38,7 @@ const Index = ({ data }) => {
                     <hr className="mt-2 mb-2 h-px w-full bg-black" />
                     <button
                       onClick={() => {
-                        navigate("/produit");
+                        navigate(`/produit/${data.id}`);
                       }}
                       className="h-12 w-64 mt-5 m-auto text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
                     >
