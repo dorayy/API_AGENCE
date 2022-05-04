@@ -4,7 +4,7 @@ class UserService {
   // Recupère tout les utilisateurs
   getAllUser() {
     return api
-      .get("/user")
+      .get("/user?apikey=123456")
       .then((response) => {
         return response.data;
       })
@@ -15,7 +15,7 @@ class UserService {
   // Recupère l'utilisateur
   getUserByID(id) {
     return api
-      .get(`/user/${id}`)
+      .get(`/user/${id}?apikey=123456`)
       .then((response) => {
         return response.data;
       })
@@ -26,7 +26,7 @@ class UserService {
   // TODO: Recupère les annonces de l'utilisateur
   getUserAnnonce(id) {
     return api
-      .get(`/user/${id}/annonce`)
+      .get(`/user/${id}/annonce?apikey=123456`)
       .then((response) => {
         return response.data;
       })
@@ -37,7 +37,7 @@ class UserService {
   // TODO: Ajoute l'utilisateur
   addUser(User) {
     return api
-      .post("/user", { User })
+      .post("/user?apikey=123456", { User })
       .then((response) => {
         return response.data;
       })
@@ -48,7 +48,7 @@ class UserService {
   // TODO: Mise à jour de l'utilisateur
   updateUser(id) {
     return api
-      .put(`/User/${id}`)
+      .put(`/User/${id}?apikey=123456`)
       .then((response) => {
         return response.data;
       })
@@ -59,7 +59,7 @@ class UserService {
   // TODO: Suppression de l'utilisateur
   deleteUser(id) {
     return api
-      .delete(`/User/${id}`)
+      .delete(`/User/${id}?apikey=123456`)
       .then((response) => {
         return response.data;
       })

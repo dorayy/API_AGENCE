@@ -51,7 +51,7 @@ const Home = () => {
                 onClick={() => {
                   navigate("/articles");
                 }}
-                className="h-12 w-2/6 mt-10 text-black rounded-2xl bg-white shadow-lg shadow-gray-600 -z-10"
+                className="h-12 w-2/6 mt-10 text-black rounded-2xl bg-white shadow-lg shadow-gray-600"
               >
                 Découvrir
               </button>

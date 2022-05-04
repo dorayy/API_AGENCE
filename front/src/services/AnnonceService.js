@@ -4,7 +4,7 @@ class AnnonceService {
   // Recupère toute les annonces
   getAllAnnonce() {
     return api
-      .get("/annonce")
+      .get("/annonce?apikey=123456")
       .then((response) => {
         return response.data;
       })
@@ -15,7 +15,7 @@ class AnnonceService {
   // Recupère l'annonce
   getAnnonceByID(id) {
     return api
-      .get(`/annonce/${id}`)
+      .get(`/annonce/${id}?apikey=123456`)
       .then((response) => {
         return response.data;
       })
@@ -26,7 +26,7 @@ class AnnonceService {
   // TODO: Recupère les x dernieres annonces
   getLastAnnonce(nb) {
     return api
-      .get(`/annonce?limit=${nb}`)
+      .get(`/annonce?limit=${nb}&apikey=123456`)
       .then((response) => {
         return response.data;
       })
@@ -37,7 +37,7 @@ class AnnonceService {
   // TODO: Ajoute l'annonce
   addAnnonce(annonce) {
     return api
-      .post("/annonce", { annonce })
+      .post("/annonce?apikey=123456", { annonce })
       .then((response) => {
         return response.data;
       })
@@ -48,7 +48,7 @@ class AnnonceService {
   // TODO: Mise à jour de l'annonce
   updateAnnonce(id) {
     return api
-      .put(`/annonce/${id}`)
+      .put(`/annonce/${id}?apikey=123456`)
       .then((response) => {
         return response.data;
       })
@@ -59,7 +59,7 @@ class AnnonceService {
   // TODO: Suppression de l'annonce
   deleteAnnonce(id) {
     return api
-      .delete(`/annonce/${id}`)
+      .delete(`/annonce/${id}?apikey=123456`)
       .then((response) => {
         return response.data;
       })

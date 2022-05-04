@@ -4,7 +4,7 @@ class AuthenticationService {
   // body: email, password
   login(body) {
     return api
-      .post("/user/login", { body })
+      .post("/user/login?apikey=123456", { body })
       .then((response) => {
         if (response.data) {
           localStorage.setItem("user", JSON.stringify(response.data));
