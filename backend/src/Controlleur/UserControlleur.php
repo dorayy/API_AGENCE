@@ -60,6 +60,13 @@ class UserControlleur extends DefaultControlleur
         $this->jsonResponse($this->model->find($id));
     }
 
+    public function login(): void
+    {
+        $apikey = md5(uniqid());
+
+        $this->model->login($_POST, $apikey);
+    }
+
     /**
      * Supprime un utilisateur
      * 

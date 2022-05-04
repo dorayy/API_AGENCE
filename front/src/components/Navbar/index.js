@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import Link from "./Link";
+import Contact from "@components/ModalMail";
 
 export default function NavbarCryptolyse({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,17 +19,19 @@ export default function NavbarCryptolyse({ children }) {
                   <p className="text-black font-origintech text-2xl">AGENCE</p>
                 </NavLink>
                 <div className="hidden md:block">
-                  <div className="ml-16 flex items-center space-x-4">
-                    <Link
-                      label="ACCUEIL"
-                      url="/"
-                      className="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-                    />
+                  <div className="ml-16 flex items-center">
+                    <Link label="ACCUEIL" url="/" className="text-black p-2" />
                     <Link
                       label="LES BIENS"
                       url="/articles"
-                      className="text-black hover:bg-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                      className="text-black p-2"
                     />
+                    <Link
+                      label="PRODUIT"
+                      url="/produit"
+                      className="text-black p-2"
+                    />
+                    <Contact />
                   </div>
                 </div>
               </div>
