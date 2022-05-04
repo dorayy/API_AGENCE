@@ -15,10 +15,6 @@ class Routeur
                     $id = null;
                     if (isset($path[4]) && is_numeric($path[4])) {
                         $id = $path[4];
-                    } elseif (isset($path[4]) && is_string($path[4])) {
-                        $method = $path[4];
-                        $controlleur->$method();
-                        die();
                     }
                     if (isset($path[5]) && is_string($path[5])) {
                         $method = $path[5];
@@ -34,9 +30,19 @@ class Routeur
                                 break;
                             case 'POST':
                                 if (!empty($_POST)) {
-                                    $controlleur->save($_POST);
+                                    if (isset($path[4]) && is_string($path[4])) {
+                                        $method = $path[2];
+
+                                        if (method_exists($controlleur, $method)) {
+                                            $controlleur->$method($_POST);
+                                        } else {
+                                            throw new \Exception("La méthode $method n'existe pas", 404);
+                                        }
+                                    } else {
+                                        $controlleur->save($_POST);
+                                    }
                                 } else {
-                                    throw new \Exception("Donné manquante pour l'ajout en BDD", 400);
+                                    throw new \Exception("Données manquantes pour l'ajout en BDD", 400);
                                 }
                                 break;
                             case 'PUT':
