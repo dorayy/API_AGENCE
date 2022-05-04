@@ -2,7 +2,7 @@
 
 namespace App\Security;
 
-use App\Model\UserModel;
+use App\Model\ClientModel;
 
 class ApiKeySecurity
 {
@@ -10,8 +10,8 @@ class ApiKeySecurity
     public static function verifyApiKey(): bool
     {
         if (isset($_GET['apikey']) && !empty($_GET['apikey'])) {
-            $userModel = new UserModel();
-            if ($userModel->findByApikey($_GET['apikey'])) {
+            $clientModel = new ClientModel();
+            if ($clientModel->findByApikey($_GET['apikey'])) {
                 return true;
             } else {
                 http_response_code(403);
