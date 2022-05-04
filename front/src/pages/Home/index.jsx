@@ -1,4 +1,6 @@
-import React from "react";
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Filter from "@components/Filter";
@@ -10,7 +12,24 @@ import Character from "@assets/images/character.png";
 import Ellipse from "@assets/images/Ellipse.svg";
 import Ellipse2 from "@assets/images/Ellipse2.svg";
 
+import AnnonceService from "@services/AnnonceService";
+
 const Home = () => {
+  const [lastAnnonces, setLastAnnonces] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responseUser = await AnnonceService.getLastAnnonce(5);
+        setLastAnnonces(responseUser);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const navigate = useNavigate();
   return (
     <>
@@ -50,7 +69,7 @@ const Home = () => {
         </h2>
         <img src={Ellipse2} className="absolute w-80 h-80 top-20 -left-24" />
         <img src={Ellipse} className="absolute w-90 h-90 bottom-24 right-64" />
-        <Carousel />
+        <Carousel data={lastAnnonces} />
       </div>
       <div className="flex justify-center items-center w-full">
         <div className="w-4/5 flex justify-center items-center -mt-20 mb-20">
