@@ -27,7 +27,7 @@ const Articles = () => {
         <div className="w-4/5 flex justify-center items-center">
           <FilterArticles />
         </div>
-        <div className="mt-10 w-4/5 flex justify-center items-center">
+        <div className="mt-10 w-4/5 pb-10 flex justify-center items-center">
           <div className="w-full flex flex-wrap gap-5 m-auto">
             {annonces.map((annonce) => (
               <div className="w-32 mt-5 bg-white rounded-2xl shadow-lg shadow-blue-500/50 overflow-hidden">
