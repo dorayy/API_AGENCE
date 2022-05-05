@@ -10,6 +10,7 @@ const Filter = ({ onChangeBien, onChangeContrat }) => {
   return (
     <div className="w-4/5">
       <div className="w-full h-full flex flex-col justify-center items-center">
+        <h2 className="text-4xl text-blue-500 mb-5">Filtrez les annonces</h2>
         <div className="w-full flex justify-between items-center">
           <select
             onChange={(e) => onChangeBien(e)}
@@ -19,7 +20,7 @@ const Filter = ({ onChangeBien, onChangeContrat }) => {
               Type de Bien
             </option>
             {AddBien.map((bien, key) => (
-              <option className="text-gray-500" value={bien} key={key}>
+              <option className="text-black" value={bien} key={key}>
                 {bien}
               </option>
             ))}
@@ -33,7 +34,7 @@ const Filter = ({ onChangeBien, onChangeContrat }) => {
               Type de Contrat
             </option>
             {AddContrat.map((contrat, key) => (
-              <option className="text-gray-500" value={contrat} key={key}>
+              <option className="text-black" value={contrat} key={key}>
                 {contrat}
               </option>
             ))}
@@ -47,9 +48,6 @@ const Filter = ({ onChangeBien, onChangeContrat }) => {
             className="w-32 p-3 rounded-2xl border-2 border-blue-500"
           />
         </div>
-        <button className="h-12 w-2/6 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50">
-          Rechercher
-        </button>
       </div>
     </div>
   );
