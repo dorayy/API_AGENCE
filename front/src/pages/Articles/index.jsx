@@ -49,8 +49,6 @@ const Articles = () => {
     setBudget(e.target.value);
   };
 
-  console.log(budget)
-
   return (
     <>
       <div className="w-full min-h-screen flex flex-col justify-center items-center pt-36 pb-10">
