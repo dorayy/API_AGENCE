@@ -58,6 +58,7 @@ class MeetupControlleur extends DefaultControlleur
     )]
     public function index(): void
     {
+        $user = $this->isGranted(self::ADMIN_ROLE);
         $this->jsonResponse($this->model->findAll());
     }
 
@@ -97,6 +98,7 @@ class MeetupControlleur extends DefaultControlleur
     )]
     public function single(int $id): void
     {
+        $user = $this->isGranted(self::USER_ROLE);
         $this->jsonResponse($this->model->find($id));
     }
 
@@ -150,6 +152,7 @@ class MeetupControlleur extends DefaultControlleur
     )]
     public function update(int $id, array $_PUT): void
     {
+        $user = $this->isGranted(self::USER_ROLE);
         $this->model->updateMeetup($id, $_PUT);
         $this->jsonResponse($this->model->find($id));
     }
@@ -189,6 +192,7 @@ class MeetupControlleur extends DefaultControlleur
     )]
     public function delete(int $id): void
     {
+        $user = $this->isGranted(self::USER_ROLE);
         if ($this->model->delete($id)) {
             $this->jsonResponse("Le Meetup a bien été delete");
         } else {
