@@ -16,8 +16,11 @@ const index = () => {
               Appartement
             </option>
           </select>
-          <select className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500">
-            <option className="text-gray-500" selected>
+          <select
+            className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+            defaultValue=""
+          >
+            <option value="" className="text-gray-500" selected>
               Type de contrat
             </option>
             <option value="Achat" className="text-black">
