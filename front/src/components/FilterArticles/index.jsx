@@ -1,6 +1,13 @@
 import React from "react";
 
-const Filter = ({ onChangeBien, onChangeContrat }) => {
+const Filter = ({
+  Bien = "",
+  Contrat = "",
+  Budget = 0,
+  onChangeBien = () => { },
+  onChangeContrat = () => { },
+  onChangeBudget = () => { } }
+) => {
   const typeBien = ["Maison", "Appartement"];
   const typeContrat = ["Achat", "Location"];
 
@@ -15,6 +22,7 @@ const Filter = ({ onChangeBien, onChangeContrat }) => {
           <select
             onChange={(e) => onChangeBien(e)}
             className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+            value={Bien}
           >
             <option className="text-gray-500" key="default">
               Type de Bien
@@ -29,6 +37,7 @@ const Filter = ({ onChangeBien, onChangeContrat }) => {
           <select
             onChange={(e) => onChangeContrat(e)}
             className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+            value={Contrat}
           >
             <option className="text-gray-500" key="default1">
               Type de Contrat
@@ -46,6 +55,8 @@ const Filter = ({ onChangeBien, onChangeContrat }) => {
             max="10000000"
             placeholder="Budget en €"
             className="w-32 p-3 rounded-2xl border-2 border-blue-500"
+            onChange={onChangeBudget}
+            value={Budget}
           />
         </div>
       </div>

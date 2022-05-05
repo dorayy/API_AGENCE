@@ -9,8 +9,12 @@ const Articles = () => {
   const [annonces, setAnnonces] = useState([]);
   const [typeBien, setTypeBien] = useState("");
   const [typeContrat, setTypeContrat] = useState("");
+  const [budget, setBudget] = useState(0);
 
   const navigate = useNavigate();
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +25,15 @@ const Articles = () => {
         console.error(error.message);
       }
     };
-
+    if (urlParams.get("Bien")) {
+      setTypeBien(urlParams.get("Bien"));
+    }
+    if (urlParams.get("Contrat")) {
+      setTypeContrat(urlParams.get("Contrat"));
+    }
+    if (urlParams.get("Budget") && urlParams.get("Budget")) {
+      setBudget(urlParams.get("Budget"));
+    }
     fetchData();
   }, []);
 
@@ -33,14 +45,23 @@ const Articles = () => {
     setTypeContrat(e.target.value);
   };
 
-  console.log(typeBien, " GAPE ", typeContrat);
+  const handleChangeBudget = (e) => {
+    setBudget(e.target.value);
+  };
+
+  console.log(budget)
+
   return (
     <>
       <div className="w-full min-h-screen flex flex-col justify-center items-center pt-36 pb-10">
         <div className="w-4/5 flex justify-center items-center">
           <FilterArticles
+            Bien={typeBien}
+            Contrat={typeContrat}
+            Budget={budget}
             onChangeBien={handleTypeBienChange}
             onChangeContrat={handleTypeContratChange}
+            onChangeBudget={handleChangeBudget}
           />
         </div>
         <div className="mt-10 w-4/5 pb-10 flex justify-center items-center">
@@ -62,6 +83,15 @@ const Articles = () => {
                   data.type_contrat
                     .toLowerCase()
                     .includes(typeContrat.toLowerCase())
+                ) {
+                  return data;
+                }
+              })
+              .filter((data) => {
+                if (budget === 0) {
+                  return data;
+                } else if (
+                  data.prix <= budget
                 ) {
                   return data;
                 }
