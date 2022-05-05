@@ -27,6 +27,11 @@ const Index = ({ data }) => {
                     src={data.images}
                     alt={data.titre}
                     className="h-full w-full object-cover"
+                    onError={({ currentTarget }) => {
+                      currentTarget.onerror = null; // prevents looping
+                      currentTarget.src =
+                        "https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+                    }}
                   />
                 </div>
                 <div className="w-6/12 h-400 flex justify-center items-center">

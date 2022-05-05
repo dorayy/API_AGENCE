@@ -90,6 +90,10 @@ paths:
                   type: integer
                 user_id:
                   type: integer
+                type_bien:
+                  type: string
+                type_contrat:
+                  type: string
               type: object
       responses:
         '200':
@@ -134,6 +138,10 @@ paths:
                   type: integer
                 user_id:
                   type: integer
+                type_bien:
+                  type: string
+                type_contrat:
+                  type: string
               type: object
       responses:
         '200':
@@ -567,6 +575,14 @@ components:
         user_id:
           type: integer
           example: 2
+          nullable: false
+        type_bien:
+          type: string
+          example: Maison
+          nullable: false
+        type_contrat:
+          type: string
+          example: Achat
           nullable: false
       type: object
     Client:

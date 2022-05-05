@@ -64,6 +64,20 @@ class Annonce implements JsonSerializable
     )]
     private int $user_id;
 
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: "Maison"
+    )]
+    private string $type_bien;
+
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: "Achat"
+    )]
+    private string $type_contrat;
+
     /**
      * Get the value of id
      */
@@ -200,6 +214,44 @@ class Annonce implements JsonSerializable
             "images" => $this->images,
             "vendu" => $this->vendu,
             "user_id" => $this->user_id,
+            "type_bien" => $this->type_bien,
+            "type_contrat" => $this->type_contrat
         ];
+    }
+
+    /**
+     * Get the value of type_contrat
+     */
+    public function getTypeContrat(): string
+    {
+        return $this->type_contrat;
+    }
+
+    /**
+     * Set the value of type_contrat
+     */
+    public function setTypeContrat(string $type_contrat): self
+    {
+        $this->type_contrat = $type_contrat;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type_bien
+     */
+    public function getTypeBien(): string
+    {
+        return $this->type_bien;
+    }
+
+    /**
+     * Set the value of type_bien
+     */
+    public function setTypeBien(string $type_bien): self
+    {
+        $this->type_bien = $type_bien;
+
+        return $this;
     }
 }

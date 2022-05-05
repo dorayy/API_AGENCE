@@ -128,6 +128,9 @@ class AnnonceControlleur extends DefaultControlleur
                     new OA\Property(property: "images", type: "string"),
                     new OA\Property(property: "vendu", type: "int"),
                     new OA\Property(property: "user_id", type: "int"),
+                    new OA\Property(property: "type_bien", type: "string"),
+                    new OA\Property(property: "type_contrat", type: "string"),
+
                 ]
             )
         ),
@@ -186,7 +189,9 @@ class AnnonceControlleur extends DefaultControlleur
                     new OA\Property(property: "description", type: "string"),
                     new OA\Property(property: "images", type: "string"),
                     new OA\Property(property: "vendu", type: "int"),
-                    new OA\Property(property: "user_id", type: "int"),
+                    new OA\Property(property: "user_id", type: "int"),                    
+                    new OA\Property(property: "type_bien", type: "string"),
+                    new OA\Property(property: "type_contrat", type: "string"),
                 ]
             )
         ),

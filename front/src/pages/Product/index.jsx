@@ -21,7 +21,8 @@ const Home = () => {
     };
 
     fetchData();
-  });
+  }, []);
+
   return (
     <>
       <div className="flex justify-center items-center w-full min-h-screen">
@@ -44,6 +45,13 @@ const Home = () => {
               <strong className="text-xl mt-5 text-left">
                 {annonce.prix} €
               </strong>
+              <p className="text-lg mt-5 text-left first-letter:uppercase">
+                Type de bien : {annonce.type_bien}
+              </p>
+              <p className="text-lg mt-5 text-left first-letter:uppercase">
+                Type de contrat : {annonce.type_contrat}
+              </p>
+
               <hr className="mt-5 mb-5 h-px w-full bg-black" />
               <RDV />
             </div>
