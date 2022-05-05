@@ -14,17 +14,17 @@ TODO:
     - [x] les 5 derniers biens ajoutés
     - [ ] (à tester) liens vers page des biens + filtre déjà en place (N'afficher que les appartements, les maisons, les biens disponible à l'achat ou la location).
     - [x] Chaque bien a un bouton voir plus pour accéder à la page du bien.
-  - [ ] Page des biens
-    - [ ] (a faire en front)liste tous les biens encore disponible de l'agence.
-    - [ ] (à mettre en bdd) filtres pour trier les biens en fonction des recherces des utilisateurs
-      - [ ] type de bien appartement/maison
-      - [ ] type de contrat location/achat
-      - [ ] budget tranche de prix
-  - [ ] Page d'un bien
-    - [ ] Au clic sur un bien on arrive sur sa page.
-    - [ ] (carroussel)Celle-ci va afficher toutes les photos du bien
+  - [x] Page des biens
+    - [x] (a faire en front)liste tous les biens encore disponible de l'agence.
+    - [x] (à mettre en bdd) filtres pour trier les biens en fonction des recherces des utilisateurs
+      - [x] type de bien appartement/maison
+      - [x] type de contrat location/achat
+      - [x] budget tranche de prix
+  - [x] Page d'un bien
+    - [x] Au clic sur un bien on arrive sur sa page.
+    - [x] (carroussel)Celle-ci va afficher toutes les photos du bien
     - [x] ses informations
-    - [ ] (à mettre en bdd) les options qui sont liées
+    - [x] (à mettre en bdd) les options qui sont liées
     - [ ] formulaire de contact
       - [x] un input pour une date de rendez-vous.
       - [ ] (en front)envoyer un mail à l'agent immobilier gérant le bien

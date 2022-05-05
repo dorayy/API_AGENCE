@@ -149,8 +149,6 @@ class AnnonceControlleur extends DefaultControlleur
     )]
     public function save(): void
     {
-        var_dump($_POST);
-        die();
         $lastId = $this->model->saveAnnonce($_POST);
         $this->jsonResponse($this->model->find($lastId));
     }
@@ -189,7 +187,7 @@ class AnnonceControlleur extends DefaultControlleur
                     new OA\Property(property: "description", type: "string"),
                     new OA\Property(property: "images", type: "string"),
                     new OA\Property(property: "vendu", type: "int"),
-                    new OA\Property(property: "user_id", type: "int"),                    
+                    new OA\Property(property: "user_id", type: "int"),
                     new OA\Property(property: "type_bien", type: "string"),
                     new OA\Property(property: "type_contrat", type: "string"),
                 ]

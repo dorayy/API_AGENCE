@@ -92,3 +92,9 @@ CREATE TABLE client(
 
 INSERT INTO `client` (`id`, `company`, `apikey`) VALUES
 (1, 'mismish', "123456");
+
+INSERT INTO `meetup` (`id`, `date`, `annonce_id`, `email`, `telephone`, `nom`, `prenom`) VALUES 
+(NULL, '1651748062', '1', 'louispoulin@gmail.com', '0700000000', 'Poulin', 'Louis');
+
+INSERT INTO `meetup` (`id`, `date`, `annonce_id`, `email`, `telephone`, `nom`, `prenom`) VALUES 
+(NULL, '1651748022', '2', 'louispoulin@gmail.com', '0700000000', 'Poulin', 'Louis');

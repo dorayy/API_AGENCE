@@ -2,7 +2,6 @@
 
 namespace App\Controlleur;
 
-use App\Model\AnnonceModel;
 use App\Model\MeetupModel;
 use Core\Controlleur\DefaultControlleur;
 use OpenApi\Attributes as OA;
@@ -85,11 +84,11 @@ class MeetupControlleur extends DefaultControlleur
         responses: [
             new OA\Response(
                 response: 200,
-                description: "Liste une annonce",
+                description: "Liste un meetup",
                 content: new OA\JsonContent(
                     type: 'array',
                     items: new OA\Items(
-                        ref: '#/components/schemas/Annonce'
+                        ref: '#/components/schemas/Meetup'
                     )
                 )
             )
@@ -142,7 +141,7 @@ class MeetupControlleur extends DefaultControlleur
                 content: new OA\JsonContent(
                     type: 'array',
                     items: new OA\Items(
-                        ref: '#/components/schemas/Annonce'
+                        ref: '#/components/schemas/Meetup'
                     )
                 )
             )

@@ -326,7 +326,6 @@ class UserControlleur extends DefaultControlleur
         // vérifier qu'on a bien le password
         $user = $this->model->getUserByEmail($userData["email"]);
         if ($user) {
-            var_dump($user->getPassword());
             if (password_verify($userData["password"], $user->getPassword())) {
                 // génération du jwt token
                 $this->jsonResponse((new JwTokenSecurity)->generateToken($user->jsonSerialize()));
