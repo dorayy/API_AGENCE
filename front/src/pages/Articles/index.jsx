@@ -47,7 +47,7 @@ const Articles = () => {
           <div className="w-full flex flex-wrap gap-5 m-auto">
             {annonces
               .filter((data) => {
-                if (typeBien === "") {
+                if (typeBien === "Type de Bien") {
                   return data;
                 } else if (
                   data.type_bien.toLowerCase().includes(typeBien.toLowerCase())
@@ -56,7 +56,7 @@ const Articles = () => {
                 }
               })
               .filter((data) => {
-                if (typeContrat === "") {
+                if (typeContrat === "Type de Contrat") {
                   return data;
                 } else if (
                   data.type_contrat
