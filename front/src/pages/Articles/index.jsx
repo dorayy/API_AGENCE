@@ -43,7 +43,7 @@ const Articles = () => {
             onChangeContrat={handleTypeContratChange}
           />
         </div>
-        <div className="mt-10 w-4/5 flex justify-center items-center">
+        <div className="mt-10 w-4/5 pb-10 flex justify-center items-center">
           <div className="w-full flex flex-wrap gap-5 m-auto">
             {annonces
               .filter((data) => {

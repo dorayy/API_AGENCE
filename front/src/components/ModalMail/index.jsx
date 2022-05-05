@@ -87,7 +87,7 @@ const Contact = () => {
             />
             <div className="flex justify-center items-center w-full">
               <button
-                className="h-12 w-2/6 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
+                className="h-12 w-64 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
                 type="submit"
               >
                 Envoyer
