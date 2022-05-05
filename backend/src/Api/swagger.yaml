@@ -10,6 +10,8 @@ servers:
 paths:
   /api/v2/annonce:
     get:
+      tags:
+        - Annonce
       summary: 'Retourne l''ensemble des annonces'
       description: 'Retoure la liste des annonces'
       operationId: 1efda8ccc214511d787e7bad014fe969
@@ -38,6 +40,8 @@ paths:
                 type: object
   '/api/v2/annonce/{id}':
     get:
+      tags:
+        - Annonce
       summary: 'Retourne une annonce par son identifiant'
       description: 'Retourne l''annonce d''id donnée'
       operationId: 04d55f4b18ea17d6cc36fa732c4ab9ac
@@ -63,6 +67,8 @@ paths:
                   $ref: '#/components/schemas/Annonce'
   /api/v2/annonce/save:
     post:
+      tags:
+        - Annonce
       summary: 'Créer une nouvelle annonce'
       operationId: 2378419f73ed284a6acd7f945ba25032
       parameters:
@@ -106,6 +112,8 @@ paths:
                   $ref: '#/components/schemas/Annonce'
   '/api/v2/annonce/{id}/update':
     put:
+      tags:
+        - Annonce
       summary: 'Update un utilisateur'
       operationId: 5f36b64de6e83aaea6959a0c4d5d456c
       parameters:
@@ -154,6 +162,8 @@ paths:
                   $ref: '#/components/schemas/Annonce'
   '/api/v2/annonce/{id}/delete':
     delete:
+      tags:
+        - Annonce
       summary: 'Supprime une annonce par son identifiant'
       description: 'Supprime l''annonce d''id donnée'
       operationId: 6ddd760ca420b7d6b79cbb2d160a3aad
@@ -175,6 +185,8 @@ paths:
           description: 'Not Found'
   /api/v2/client:
     get:
+      tags:
+        - Client
       summary: 'Retourne l''ensemble des clients'
       description: 'Retourne la liste des clients'
       operationId: 5f12ac992387253f132501e97f9da000
@@ -203,6 +215,8 @@ paths:
                 type: object
   '/api/v2/client/{id}':
     get:
+      tags:
+        - Client
       summary: 'Retourne une client par son identifiant'
       description: 'Retourne le client d''id donnée'
       operationId: 84bae54164b7f5e12339b5d13dd1afe1
@@ -228,6 +242,8 @@ paths:
                   $ref: '#/components/schemas/Client'
   /api/v2/client/save:
     post:
+      tags:
+        - Client
       operationId: ecebdc3abd5a8e731ce686f9357ce744
       parameters:
         -
@@ -302,13 +318,13 @@ paths:
           required: true
       responses:
         '200':
-          description: 'Liste une annonce'
+          description: 'Liste un meetup'
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Annonce'
+                  $ref: '#/components/schemas/Meetup'
   '/api/v2/meetup/{id}/update':
     put:
       summary: 'Update un meetup'
@@ -348,7 +364,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Annonce'
+                  $ref: '#/components/schemas/Meetup'
   '/api/v2/meetup/{id}/delete':
     delete:
       summary: 'Supprime un meetup par son identifiant'
