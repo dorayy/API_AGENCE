@@ -4,10 +4,10 @@ const Filter = ({
   Bien = "",
   Contrat = "",
   Budget = 0,
-  onChangeBien = () => { },
-  onChangeContrat = () => { },
-  onChangeBudget = () => { } }
-) => {
+  onChangeBien = () => {},
+  onChangeContrat = () => {},
+  onChangeBudget = () => {},
+}) => {
   const typeBien = ["Maison", "Appartement"];
   const typeContrat = ["Achat", "Location"];
 
