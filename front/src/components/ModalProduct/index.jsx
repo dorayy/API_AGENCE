@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 import Close from "@assets/images/close.svg";
 
 const Result = () => {
@@ -15,18 +14,7 @@ const Contact = () => {
 
   const [result, showResult] = useState(false);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm(
-      "agency_mail",
-      "agency_mail",
-      e.target,
-      "user_4pZtHgAYvI4HpQAguAQGD"
-    );
-
-    e.target.reset();
-
+  const sendEmail = () => {
     showResult(true);
   };
 
@@ -45,7 +33,7 @@ const Contact = () => {
       {modal && (
         <div
           className="fixed top-0 left-0 w-full h-full flex justify-center items-center"
-          id="modal*"
+          id="modal"
         >
           <div
             className="fixed top-0 left-0 w-full h-full bg-black opacity-30"
@@ -59,14 +47,28 @@ const Contact = () => {
               <img src={Close} alt="Close" />
             </button>
             <div>{result ? <Result /> : null}</div>
-            <label>NOM Prénom</label>
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Nom Prénom"
-              className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
-              required
-            />
+            <div className="flex justify-between items-center w-full">
+              <div className="flex flex-col items-start w-48">
+                <label>NOM</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Nom"
+                  className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
+                  required
+                />
+              </div>
+              <div className="flex flex-col items-start w-48">
+                <label>Prénom</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="Prénom"
+                  className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
+                  required
+                />
+              </div>
+            </div>
             <label>Email</label>
             <input
               type="email"
@@ -75,28 +77,28 @@ const Contact = () => {
               className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
-            <label>Objet</label>
+            <label>Téléphone</label>
             <input
-              type="text"
-              name="object"
-              placeholder="Objet"
+              type="tel"
+              name="tel"
+              pattern="+33 6 00 00 00 00"
+              placeholder="Téléphone"
               className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
-            <label>Message</label>
-            <textarea
-              type="text"
-              name="message"
-              placeholder="Message"
+            <label>Date</label>
+            <input
+              type="date"
+              name="date"
               className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
             <div className="flex justify-center items-center w-full">
               <button
-                className="h-12 w-2/6 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
+                className="h-12 w-64 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
                 type="submit"
               >
-                Envoyer
+                Prendre rendez-vous
               </button>
             </div>
           </form>
