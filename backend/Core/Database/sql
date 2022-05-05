@@ -2,6 +2,15 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données :  `agence`
+--
+CREATE DATABASE IF NOT EXISTS agence;
+-- --------------------------------------------------------
+USE agence;
 
 #------------------------------------------------------------
 # Table: user
@@ -57,10 +66,10 @@ CREATE TABLE meetup(
 
 INSERT INTO `user` (`id`, `username`, `email`, `roles`, `password`) VALUES
 (1, 'User1', 'user1@user.com', 0 , '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS'),
-(2, 'User2', 'user2@user.com', 1, '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS'),
-(3, 'User3', 'user3@user.com', 2, '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS'),
-(4, 'User4', 'user4@user.com', 2, '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS'),
-(5, 'User5', 'user5@user.com', 1, '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS');
+(2, 'User2', 'user2@user.com', 0, '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS'),
+(3, 'User3', 'user3@user.com', 0, '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS'),
+(4, 'User4', 'user4@user.com', 0, '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS'),
+(5, 'Admin', 'admin@admin.com', 1, '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS');
 -- --------------------------------------------------------
 
 --
