@@ -3,16 +3,50 @@
 namespace App\Entity;
 
 use JsonSerializable;
+use OpenApi\Attributes as OA;
 
+#[OA\Schema(
+    title: "User",
+    description: "Schéma d'un User"
+)]
 class User implements JsonSerializable
 {
     // Uniquement pour php 
     // readonly met la propriété en lecture uniquement
     // private readonly int $id
+    #[OA\Property(
+        type: "integer",
+        nullable: false,
+        example: 1
+    )]
     private int $id;
+
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: "contact@agence.com"
+    )]
     private string $email;
+
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: "agence"
+    )]
     private string $username;
+
+    #[OA\Property(
+        type: "int",
+        nullable: false,
+        example: 1
+    )]
     private int $roles;
+
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: '$2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS'
+    )]
     private string $password;
 
     public function jsonSerialize(): mixed

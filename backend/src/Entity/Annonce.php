@@ -3,18 +3,65 @@
 namespace App\Entity;
 
 use JsonSerializable;
+use OpenApi\Attributes as OA;
 
+#[OA\Schema(
+    title: "Annonce",
+    description: "Schéma d'une Annonce"
+)]
 class Annonce implements JsonSerializable
 {
     // Uniquement pour php 
     // readonly met la propriété en lecture uniquement
     // private readonly int $id
+
+    #[OA\Property(
+        type: "integer",
+        nullable: false,
+        example: 1
+    )]
     private int $id;
+
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: "Annonce n°1"
+    )]
     private string $titre;
+
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: "250 000 €"
+    )]
     private float $prix;
+
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at accumsan libero. Nunc ac turpis eget sem auctor commodo. Aliquam eros enim, tempus eget consequat sit amet,"
+    )]
     private string $description;
+
+    #[OA\Property(
+        type: "string",
+        nullable: false,
+        example: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+    )]
     private string $images;
+
+    #[OA\Property(
+        type: "int",
+        nullable: false,
+        example: 0
+    )]
     private bool $vendu;
+
+    #[OA\Property(
+        type: "integer",
+        nullable: false,
+        example: 2
+    )]
     private int $user_id;
 
     /**

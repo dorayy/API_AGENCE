@@ -1,0 +1,648 @@
+openapi: 3.0.0
+info:
+  title: 'API AGENCE'
+  description: 'Agence immobilieres'
+  version: '1.1'
+servers:
+  -
+    url: 'http://localhost:8000'
+    description: 'Serveur de test'
+paths:
+  /api/v2/annonce:
+    get:
+      summary: 'Retourne l''ensemble des annonces'
+      description: 'Retoure la liste des annonces'
+      operationId: 1efda8ccc214511d787e7bad014fe969
+      parameters:
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste des annonces'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Annonce'
+        '404':
+          description: 'Not Found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: 'Route not found' }
+                type: object
+  '/api/v2/annonce/{id}':
+    get:
+      summary: 'Retourne une annonce par son identifiant'
+      description: 'Retourne l''annonce d''id donnée'
+      operationId: 04d55f4b18ea17d6cc36fa732c4ab9ac
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste une annonce'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Annonce'
+  /api/v2/annonce/save:
+    post:
+      summary: 'Créer une nouvelle annonce'
+      operationId: 2378419f73ed284a6acd7f945ba25032
+      parameters:
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      requestBody:
+        request: 'Ajout d''une annonce'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                titre:
+                  type: string
+                prix:
+                  type: string
+                description:
+                  type: string
+                images:
+                  type: string
+                vendu:
+                  type: integer
+                user_id:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Liste une annonce'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Annonce'
+  '/api/v2/annonce/{id}/update':
+    put:
+      summary: 'Update un utilisateur'
+      operationId: 5f36b64de6e83aaea6959a0c4d5d456c
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      requestBody:
+        request: 'Maj d''une annonce'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                titre:
+                  type: string
+                prix:
+                  type: string
+                description:
+                  type: string
+                images:
+                  type: string
+                vendu:
+                  type: integer
+                user_id:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Mis à jour'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Annonce'
+  '/api/v2/annonce/{id}/delete':
+    delete:
+      summary: 'Supprime une annonce par son identifiant'
+      description: 'Supprime l''annonce d''id donnée'
+      operationId: 6ddd760ca420b7d6b79cbb2d160a3aad
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: Supprimé
+        '404':
+          description: 'Not Found'
+  /api/v2/client:
+    get:
+      summary: 'Retourne l''ensemble des clients'
+      description: 'Retourne la liste des clients'
+      operationId: 5f12ac992387253f132501e97f9da000
+      parameters:
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste des clients'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+        '404':
+          description: 'Not Found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: 'Route not found' }
+                type: object
+  '/api/v2/client/{id}':
+    get:
+      summary: 'Retourne une client par son identifiant'
+      description: 'Retourne le client d''id donnée'
+      operationId: 84bae54164b7f5e12339b5d13dd1afe1
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste une client'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+  /api/v2/client/save:
+    post:
+      operationId: ecebdc3abd5a8e731ce686f9357ce744
+      parameters:
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      requestBody:
+        request: 'Ajout d''un client'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                company:
+                  type: string
+                apiKey:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Liste un client'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+  /api/v2/meetup:
+    get:
+      summary: 'Retourne l''ensemble des meetups'
+      description: 'Retoure la liste des meetup'
+      operationId: 0487d06ccadf844834785e185f3c1386
+      parameters:
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste les meetups'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meetup'
+        '404':
+          description: 'Not Found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: 'Route not found' }
+                type: object
+  '/api/v2/meetup/{id}':
+    get:
+      summary: 'Retourne un meetup par son identifiant'
+      description: 'Retourne le meetup d''id donnée'
+      operationId: cb54580a3f83fe9ed3ef80af08eb7577
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste une annonce'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Annonce'
+  '/api/v2/meetup/{id}/update':
+    put:
+      summary: 'Update un meetup'
+      operationId: 97cafaea046fee1db794d331642ffb76
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      requestBody:
+        request: 'Maj d''un meetup'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                telephone:
+                  type: string
+                nom:
+                  type: integer
+                prenom:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Mis à jour'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Annonce'
+  '/api/v2/meetup/{id}/delete':
+    delete:
+      summary: 'Supprime un meetup par son identifiant'
+      description: 'Supprime un meetup'
+      operationId: 6513206937f4311ee5887ac249a7e48a
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: Supprimé
+        '404':
+          description: 'Not Found'
+  /api/v2/user:
+    get:
+      summary: 'Retourne l''ensemble des utilisateurs'
+      description: 'Retoure la liste des utilisateurs'
+      operationId: f71c19e7e24bb6e63727bc79ed5dce95
+      parameters:
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste des utilisateurs'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '404':
+          description: 'Not Found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: 'Route not found' }
+                type: object
+  '/api/v2/user/{id}':
+    get:
+      summary: 'Retourne un utilisateur par son identifiant'
+      description: 'Retourne l''utilisateur d''id donnée'
+      operationId: eba1cdd45269a8b821241271b5f52d84
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste l''utilisateur'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  '/api/v2/user/{id}/update':
+    put:
+      summary: 'Update un utilisateur'
+      operationId: 06600d194e3b30853f631c64967484b5
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      requestBody:
+        request: 'Maj de l''user'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                roles:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Mis à jour'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Annonce'
+  '/api/v2/user/{id}/delete':
+    delete:
+      summary: 'Supprime un utilisateur par son identifiant'
+      description: 'Supprime un utilisateur'
+      operationId: 353f67d4755e7e2d98d8402152aadef0
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: Supprimé
+        '404':
+          description: 'Not Found'
+  /api/v2/user/save:
+    post:
+      summary: 'Créer un nouvelle utilisateur'
+      operationId: 38eb4c0c9131ca32e13c1a8282b3122d
+      parameters:
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      requestBody:
+        request: 'Ajout d''un user'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                roles:
+                  type: string
+                password:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Retourne un utilisateur'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /api/v2/user/login:
+    post:
+      summary: 'Connexion de l''utilisateur'
+      operationId: 4c336830d9f1c057867a45bfc28fee75
+      parameters:
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      requestBody:
+        request: 'Connexion d''un utilisateur'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Connected
+components:
+  schemas:
+    Annonce:
+      title: Annonce
+      description: 'Schéma d''une Annonce'
+      properties:
+        id:
+          type: integer
+          example: 1
+          nullable: false
+        titre:
+          type: string
+          example: 'Annonce n°1'
+          nullable: false
+        prix:
+          type: string
+          example: '250 000 €'
+          nullable: false
+        description:
+          type: string
+          example: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at accumsan libero. Nunc ac turpis eget sem auctor commodo. Aliquam eros enim, tempus eget consequat sit amet,'
+          nullable: false
+        images:
+          type: string
+          example: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'
+          nullable: false
+        vendu:
+          type: integer
+          example: 0
+          nullable: false
+        user_id:
+          type: integer
+          example: 2
+          nullable: false
+      type: object
+    Client:
+      title: Client
+      description: 'Schéma d''un Client'
+      properties:
+        id:
+          type: integer
+          example: 1
+          nullable: false
+        company:
+          type: string
+          example: IPSSI
+          nullable: false
+        apiKey:
+          description: 'Ceci n''est pas une vrai clée , contactez l''agence pour vous en procurer'
+          type: string
+          example: $2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS
+          nullable: false
+      type: object
+    Meetup:
+      title: Meetup
+      description: 'Schéma d''un Meetup'
+      properties:
+        id:
+          type: integer
+          example: 1
+          nullable: false
+        date:
+          type: string
+          format: date-time
+          example: '2022-05-04 23:22:33.419154'
+          nullable: false
+        annonce_id:
+          type: integer
+          example: 1
+          nullable: false
+        email:
+          type: string
+          example: contact@agence.com
+          nullable: false
+        telephone:
+          type: string
+          example: '0102030405'
+          nullable: false
+        nom:
+          type: string
+          example: AGENCE
+          nullable: false
+        prenom:
+          type: string
+          example: AGENCE
+          nullable: false
+      type: object
+    User:
+      title: User
+      description: 'Schéma d''un User'
+      properties:
+        id:
+          type: integer
+          example: 1
+          nullable: false
+        email:
+          type: string
+          example: contact@agence.com
+          nullable: false
+        username:
+          type: string
+          example: agence
+          nullable: false
+        roles:
+          type: integer
+          example: 1
+          nullable: false
+        password:
+          type: string
+          example: $2y$10$FT4e0uyY2rdJSgyOUMLBeefpL1hO1Lto0hwcM7mbcCBL5aam561DS
+          nullable: false
+      type: object
