@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const index = () => {
+const Filter = () => {
+  const navigate = useNavigate();
+  const [typeBien, setTypeBien] = useState("");
+  const [typeContrat, setTypeContrat] = useState("");
+  const [budget, setBudget] = useState("");
+
+  const handleTypeBienChange = (e) => {
+    setTypeBien(e.target.value);
+  };
+
+  const handleTypeContratChange = (e) => {
+    setTypeContrat(e.target.value);
+  };
+
+  const handleBudgetChange = (e) => {
+    setBudget(e.target.value)
+  }
+
+  const handleResearch = () => {
+    navigate("/articles?Bien=" + typeBien + "&Contrat=" + typeContrat + "&Budget=" + budget);
+  }
+
   return (
     <div className="w-4/5 h-60 rounded-2xl shadow-xl shadow-blue-500/50 bg-white p-4">
       <div className="w-full h-full flex flex-col justify-center items-center">
@@ -8,7 +30,11 @@ const index = () => {
           Affinez votre recherche
         </h6>
         <div className="w-full flex justify-between items-center">
-          <select className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500">
+          <select
+            className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+            defaultValue=""
+            onChange={handleTypeBienChange}
+          >
             <option className="text-gray-500" selected>
               Type de bien
             </option>
@@ -22,6 +48,7 @@ const index = () => {
           <select
             className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
             defaultValue=""
+            onChange={handleTypeContratChange}
           >
             <option value="" className="text-gray-500">
               Type de contrat
@@ -39,9 +66,13 @@ const index = () => {
             max="10000000"
             placeholder="Budget en €"
             className=" w-32 p-3 rounded-2xl border-2 border-blue-500"
+            onChange={handleBudgetChange}
           />
         </div>
-        <button className="h-12 w-2/6 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50">
+        <button
+          className="h-12 w-2/6 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
+          onClick={handleResearch}
+        >
           Rechercher
         </button>
       </div>
@@ -49,4 +80,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Filter;
