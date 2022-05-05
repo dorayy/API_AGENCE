@@ -1,32 +1,44 @@
 import React from "react";
 
-const index = () => {
+const Filter = ({ onChangeBien, onChangeContrat }) => {
+  const typeBien = ["Maison", "Appartement"];
+  const typeContrat = ["Achat", "Location"];
+
+  const AddBien = typeBien.map((Add) => Add);
+  const AddContrat = typeContrat.map((Add) => Add);
+
   return (
     <div className="w-4/5">
       <div className="w-full h-full flex flex-col justify-center items-center">
         <div className="w-full flex justify-between items-center">
-          <select className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500">
-            <option className="text-gray-500" selected>
-              Type de bien
+          <select
+            onChange={(e) => onChangeBien(e)}
+            className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+          >
+            <option className="text-gray-500" key="default">
+              Type de Bien
             </option>
-            <option value="Maison" className="text-black">
-              Maison
-            </option>
-            <option value="Appartement" className="text-black">
-              Appartement
-            </option>
+            {AddBien.map((bien, key) => (
+              <option className="text-gray-500" value={bien} key={key}>
+                {bien}
+              </option>
+            ))}
           </select>
-          <select className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500">
-            <option className="text-gray-500" selected>
-              Type de contrat
+
+          <select
+            onChange={(e) => onChangeContrat(e)}
+            className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+          >
+            <option className="text-gray-500" key="default1">
+              Type de Contrat
             </option>
-            <option value="Achat" className="text-black">
-              Achat
-            </option>
-            <option value="Location" className="text-black">
-              Location
-            </option>
+            {AddContrat.map((contrat, key) => (
+              <option className="text-gray-500" value={contrat} key={key}>
+                {contrat}
+              </option>
+            ))}
           </select>
+
           <input
             type="number"
             min="100"
@@ -43,4 +55,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Filter;
