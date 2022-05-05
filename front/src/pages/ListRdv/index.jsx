@@ -1,9 +1,8 @@
 import React from "react";
 
+import ModalEditProduct from "@components/ModalEditProduct";
+import ModalDelete from "@components/ModalDelete";
 import Footer from "@components/Footer";
-
-import Edit from "@assets/images/edit.svg";
-import Delete from "@assets/images/delete.svg";
 
 export const ListRdv = () => {
   return (
@@ -17,20 +16,8 @@ export const ListRdv = () => {
               <p>Tél : 0700000000</p>
               <p>Email : louispoulin@gmail.com</p>
               <div className="flex">
-                <button
-                  type="button"
-                  className="h-10 w-10 flex justify-center items-center rounded-2xl bg-yellow-500"
-                  title="Editer"
-                >
-                  <img src={Edit} alt="" />
-                </button>
-                <button
-                  type="button"
-                  className="h-10 w-10 flex justify-center items-center ml-2 rounded-2xl bg-red-600"
-                  title="Supprimer"
-                >
-                  <img src={Delete} alt="" />
-                </button>
+                <ModalEditProduct />
+                <ModalDelete />
               </div>
             </div>
           </li>

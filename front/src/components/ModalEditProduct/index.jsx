@@ -1,22 +1,10 @@
 import React, { useState } from "react";
-import Close from "@assets/images/close.svg";
 
-const Result = () => {
-  return (
-    <p className="text-center text-lime-500 mb-5">
-      Votre message a bien été envoyé !
-    </p>
-  );
-};
+import Close from "@assets/images/close.svg";
+import Edit from "@assets/images/edit.svg";
 
 const Contact = () => {
   const [modal, setModal] = useState(false);
-
-  const [result, showResult] = useState(false);
-
-  const sendEmail = () => {
-    showResult(true);
-  };
 
   const toggleModal = () => {
     setModal(!modal);
@@ -25,27 +13,23 @@ const Contact = () => {
   return (
     <div>
       <button
-        className="h-12 w-64 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
+        type="button"
+        className="h-10 w-10 flex justify-center items-center rounded-2xl bg-yellow-500"
+        title="Editer"
         onClick={toggleModal}
       >
-        Prendre rendez-vous
+        <img src={Edit} alt="" />
       </button>
       {modal && (
-        <div
-          className="modal fixed top-0 left-0 w-full h-full flex justify-center items-center"
-        >
+        <div className="modal fixed top-0 left-0 w-full h-full flex justify-center items-center">
           <div
             className="fixed top-0 left-0 w-full h-full bg-black opacity-30"
             onClick={toggleModal}
           ></div>
-          <form
-            onSubmit={sendEmail}
-            className="absolute w-500 h-550 p-4 flex flex-col justify-center rounded-2xl bg-white"
-          >
+          <form className="absolute w-500 h-550 p-4 flex flex-col justify-center rounded-2xl bg-white">
             <button className="absolute top-2 right-2" onClick={toggleModal}>
               <img src={Close} alt="Close" />
             </button>
-            <div>{result ? <Result /> : null}</div>
             <div className="flex justify-between items-center w-full">
               <div className="flex flex-col items-start w-48">
                 <label>NOM</label>
@@ -97,7 +81,7 @@ const Contact = () => {
                 className="h-12 w-64 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
                 type="submit"
               >
-                Prendre rendez-vous
+                Modifier le rendez-vous
               </button>
             </div>
           </form>

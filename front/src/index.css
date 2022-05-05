@@ -16,7 +16,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#modal {
+.modal {
   z-index: 666 !important;
 }
 
