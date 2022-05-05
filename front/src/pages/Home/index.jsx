@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 import Filter from "@components/Filter";
 import Carousel from "@components/Carousel";
+import Avis from "@components/Avis";
 import Footer from "@components/Footer";
 
 import HomeBanner from "@assets/images/main.png";
 import Character from "@assets/images/character.png";
 import Ellipse from "@assets/images/Ellipse.svg";
 import Ellipse2 from "@assets/images/Ellipse2.svg";
+import AvisImg from "@assets/images/avis.JPG";
 
 import AnnonceService from "@services/AnnonceService";
 
@@ -111,6 +113,27 @@ const Home = () => {
           pour répondre à vos attentes et vous conseiller dans tous vos projets
           immobiliers.
         </p>
+      </div>
+      <div className="w-full flex flex-col justify-center items-center pt-10">
+        <h3 className="text-center text-5xl font-semibold mt-5 mb-5">
+          Vos avis sur notre agence
+        </h3>
+        <div className="w-4/5 flex justify-between items-center">
+          <Avis />
+          <div className="w-1/2 flex flex-col justify-between items-start">
+            <h4 className="text-4xl text-blue-500">
+              Nos clients en parlent le mieux !
+            </h4>
+            <p className="flex font-bold mt-10">
+              <img src={AvisImg} alt="" className="mr-5" /> 85 451 Avis
+            </p>
+            <p className="mt-10">
+              Nos avis clients sont récoltés par un organisme indépendant
+              disposant d’une triple certification AFNOR, d’une certification
+              AFAQ et n°1 dans la relation clients / agents immobiliers.
+            </p>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
