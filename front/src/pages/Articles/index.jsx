@@ -86,7 +86,7 @@ const Articles = () => {
                 }
               })
               .filter((data) => {
-                if (budget === 0) {
+                if (budget === 0 || budget === "") {
                   return data;
                 } else if (
                   data.prix <= budget
