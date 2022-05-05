@@ -61,6 +61,7 @@ class UserControlleur extends DefaultControlleur
     )]
     public function index(): void
     {
+        $this->isGranted(self::ADMIN_ROLE);
         $this->jsonResponse($this->model->findAll());
     }
 
@@ -100,6 +101,7 @@ class UserControlleur extends DefaultControlleur
     )]
     public function single(int $id): void
     {
+        $this->isGranted(self::ADMIN_ROLE);
         $this->jsonResponse($this->model->find($id));
     }
 
@@ -154,15 +156,11 @@ class UserControlleur extends DefaultControlleur
     )]
     public function update(int $id, array $_PUT): void
     {
-        $this->model->updateUser($id, $_PUT);
-        $this->jsonResponse($this->model->find($id));
-    }
-
-    public function loginDoray(): void
-    {
-        $apikey = md5(uniqid());
-
-        $this->model->login($_POST, $apikey);
+        $user = $this->isGranted(self::USER_ROLE);
+        if ($user["id"] = $id) {
+            $this->model->updateUser($id, $_PUT);
+            $this->jsonResponse($this->model->find($id));
+        }
     }
 
     /**
@@ -201,6 +199,7 @@ class UserControlleur extends DefaultControlleur
     )]
     public function delete(int $id): void
     {
+        $this->isGranted(self::ADMIN_ROLE);
         if ($this->model->delete($id)) {
             $this->jsonResponse("L'utilisateur a bien été delete");
         } else {
@@ -217,6 +216,7 @@ class UserControlleur extends DefaultControlleur
      */
     public function annonce(int $id): void
     {
+        $this->isGranted(self::USER_ROLE);
         $customModel = new AnnonceModel();
         $this->jsonResponse($customModel->findByUserId($id));
     }
@@ -226,7 +226,7 @@ class UserControlleur extends DefaultControlleur
      */
     public function meetup(int $id): void
     {
-        $this->isGranted(self::USER_ROLE);
+        $user = $this->isGranted(self::USER_ROLE);
         $customAnnonceModel = new AnnonceModel();
         $customMeetupModel = new MeetupModel();
         $annonces = $customAnnonceModel->findByUserId($id);
@@ -280,6 +280,7 @@ class UserControlleur extends DefaultControlleur
     )]
     public function save(): void
     {
+        $this->isGranted(self::ADMIN_ROLE);
         if (isset($_POST["username"], $_POST["email"], $_POST["password"])) {
             $user = $_POST;
             $user["password"] = password_hash($user["password"], PASSWORD_DEFAULT);

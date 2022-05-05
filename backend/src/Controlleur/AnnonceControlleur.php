@@ -149,7 +149,10 @@ class AnnonceControlleur extends DefaultControlleur
     )]
     public function save(): void
     {
-        $lastId = $this->model->saveAnnonce($_POST);
+        $user = $this->isGranted(self::USER_ROLE);
+        $annonce = $_POST;
+        $annonce["user_id"] = $user["id"];
+        $lastId = $this->model->saveAnnonce($annonce);
         $this->jsonResponse($this->model->find($lastId));
     }
 
@@ -208,6 +211,7 @@ class AnnonceControlleur extends DefaultControlleur
     )]
     public function update(int $id, array $_PUT): void
     {
+        $this->isGranted(self::USER_ROLE);
         $this->model->updateAnnonce($id, $_PUT);
         $this->jsonResponse($this->model->find($id));
     }
@@ -246,6 +250,7 @@ class AnnonceControlleur extends DefaultControlleur
     )]
     public function delete(int $id): void
     {
+        $this->isGranted(self::USER_ROLE);
         if ($this->model->delete($id)) {
             $this->jsonResponse("L'annonce a bien été delete");
         } else {

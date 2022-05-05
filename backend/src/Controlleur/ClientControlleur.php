@@ -55,6 +55,7 @@ final class ClientControlleur extends DefaultControlleur
     )]
     public function index(): void
     {
+        $this->isGranted(self::ADMIN_ROLE);
         $this->jsonResponse($this->model->findAll());
     }
 
@@ -95,6 +96,7 @@ final class ClientControlleur extends DefaultControlleur
     )]
     public function single(int $id): void
     {
+        $this->isGranted(self::ADMIN_ROLE);
         $this->jsonResponse($this->model->find($id));
     }
 
@@ -132,6 +134,7 @@ final class ClientControlleur extends DefaultControlleur
     )]
     public function save($client): void
     {
+        $this->isGranted(self::ADMIN_ROLE);
         $apiKey = md5(uniqid());
         $client["apiKey"] = $apiKey;
         $lastId = $this->model->saveClient($client);

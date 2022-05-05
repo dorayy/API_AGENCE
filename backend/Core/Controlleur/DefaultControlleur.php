@@ -15,7 +15,7 @@ class DefaultControlleur
     protected const USER_ROLE = 0;
     protected const ADMIN_ROLE = 1;
 
-    public function isGranted(string $role): ?bool
+    public function isGranted(string $role): ?array
     {
         $user = (new JwTokenSecurity())->decodeToken();
 
@@ -24,6 +24,6 @@ class DefaultControlleur
             throw new \Exception("Vous n'avez pas les droits pour effectué cette opération", 403);
         }
 
-        return true;
+        return $user;
     }
 }
