@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import Link from "./Link";
 import Contact from "@components/ModalMail";
 
 export default function NavbarCryptolyse({ children }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+    window.location.reload();
+  };
+
+  console.log(user);
 
   return (
     <>
@@ -30,26 +43,39 @@ export default function NavbarCryptolyse({ children }) {
                         url="/articles"
                         className="text-black p-2"
                       />
-                      <Link
-                        label="MES RENDEZ-VOUS"
-                        url="/liste-rdv"
-                        className="text-black p-2"
-                      />
+                      {token && (
+                        <Link
+                          label="MES RENDEZ-VOUS"
+                          url="/liste-rdv"
+                          className="text-black p-2"
+                        />
+                      )}
                     </div>
                     <div className="flex items-center">
                       <div className="mr-4 flex items-center">
                         <Contact />
                       </div>
-                      <Link
-                        label="CONNEXION"
-                        url="/connexion"
-                        className="text-black p-2"
-                      />
-                      <Link
-                        label="CRÉER UN UTILISATEUR"
-                        url="/inscription"
-                        className="text-black p-2"
-                      />
+                      {!token ? (
+                        <Link
+                          label="CONNEXION"
+                          url="/connexion"
+                          className="text-black p-2"
+                        />
+                      ) : (
+                        <button
+                          onClick={handleLogout}
+                          className="text-black p-2"
+                        >
+                          DECONNEXION
+                        </button>
+                      )}
+                      {user?.roles === 1 && (
+                        <Link
+                          label="CRÉER UN UTILISATEUR"
+                          url="/inscription"
+                          className="text-black p-2"
+                        />
+                      )}
                     </div>
                   </div>
                 </div>

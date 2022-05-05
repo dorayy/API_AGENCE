@@ -1,26 +1,31 @@
 import { api } from "@utils/axios";
+import qs from "qs";
+import useJwtDecode from "../utils/hooks/JwtDecode";
 
 class AuthenticationService {
-  // body: email, password
-  login(body) {
-    return api
-      .post("/user/login?apikey=123456", { body })
-      .then((response) => {
-        if (response.data) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-          // localStorage.setItem("token", JSON.stringify(response.data.token));
-          window.location.reload();
-        }
-        return response.data;
-      })
-      .catch((error) => {
-        return error.response.status;
-      });
-  }
+  login(email, password) {
+    const data = qs.stringify({
+      email,
+      password,
+    });
 
-  logout() {
-    localStorage.clear();
-    window.location.reload();
+    return api({
+      method: "post",
+      url: "/user/login?apikey=123456",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data,
+    })
+      .then(function (response) {
+        localStorage.setItem("token", JSON.stringify(response.data));
+        const user = useJwtDecode(response.data);
+        localStorage.setItem("user", JSON.stringify(user));
+        return response.status;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   isLogin() {
