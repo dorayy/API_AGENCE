@@ -78,6 +78,13 @@ class Annonce implements JsonSerializable
     )]
     private string $type_contrat;
 
+    #[OA\Property(
+        type: "integer",
+        nullable: false,
+        example: 25
+    )]
+    private string $superficie;
+
     /**
      * Get the value of id
      */
@@ -203,22 +210,6 @@ class Annonce implements JsonSerializable
 
         return $this;
     }
-
-    public function jsonSerialize(): mixed
-    {
-        return [
-            "id" => $this->id,
-            "titre" => $this->titre,
-            "prix" => $this->prix,
-            "description" => $this->description,
-            "images" => $this->images,
-            "vendu" => $this->vendu,
-            "user_id" => $this->user_id,
-            "type_bien" => $this->type_bien,
-            "type_contrat" => $this->type_contrat
-        ];
-    }
-
     /**
      * Get the value of type_contrat
      */
@@ -253,5 +244,39 @@ class Annonce implements JsonSerializable
         $this->type_bien = $type_bien;
 
         return $this;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getSuperficie(): int
+    {
+        return $this->superficie;
+    }
+
+    /**
+     * Set the value of id
+     */
+    public function setSuperficie(int $superficie): self
+    {
+        $this->superficie = $superficie;
+
+        return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            "id" => $this->id,
+            "titre" => $this->titre,
+            "prix" => $this->prix,
+            "description" => $this->description,
+            "images" => $this->images,
+            "vendu" => $this->vendu,
+            "user_id" => $this->user_id,
+            "type_bien" => $this->type_bien,
+            "type_contrat" => $this->type_contrat,
+            "superficie" => $this->superficie
+        ];
     }
 }
