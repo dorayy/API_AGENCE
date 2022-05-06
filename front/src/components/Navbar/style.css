@@ -1,0 +1,59 @@
+#logout {
+  padding: 1rem;
+}
+
+.dropbtn {
+  padding: 16px;
+
+  background-color: #eab308;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+
+  font-size: 16px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+
+  z-index: 1;
+  position: absolute;
+
+  min-width: 250px;
+  width: 100%;
+
+  text-align: left;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+
+.dropdown-content .a {
+  display: block;
+
+  width: 100%;
+
+  padding: 15px 10px;
+
+  text-align: left;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-content .a:hover {
+  text-align: left;
+  background-color: #ddd;
+  border-radius: 1rem;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #ca9907;
+}

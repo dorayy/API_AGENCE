@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import Link from "./Link";
 import Contact from "@components/ModalMail";
+import "./style.css";
 
 export default function NavbarCryptolyse({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,30 +57,52 @@ export default function NavbarCryptolyse({ children }) {
                         />
                       )}
                     </div>
-                    <div className="flex items-center">
-                      <div className="mr-4 flex items-center">
-                        {!token ? <Contact /> : <></>}
-                      </div>
+                    <div className="flex items-center relative">
                       {!token ? (
-                        <Link
-                          label="CONNEXION"
-                          url="/connexion"
-                          className="text-black p-2"
-                        />
+                        <>
+                          <Contact />
+                          <Link
+                            label="CONNEXION"
+                            url="/connexion"
+                            className="text-black p-2"
+                          />
+                        </>
                       ) : (
-                        <button
-                          onClick={handleLogout}
-                          className="text-black p-2"
-                        >
-                          DECONNEXION
-                        </button>
-                      )}
-                      {user?.roles === 1 && (
-                        <Link
-                          label="CRÉER UN UTILISATEUR"
-                          url="/inscription"
-                          className="text-black p-2"
-                        />
+                        <div className="dropdown">
+                          <button className="dropbtn">MON COMPTE</button>
+                          <div className="dropdown-content shadow-lg shadow-blue-500/50">
+                            {user?.roles === 1 && (
+                              <button className="a">
+                                <Link
+                                  label="CRÉER UN UTILISATEUR"
+                                  url="/inscription"
+                                  className="text-black"
+                                />
+                              </button>
+                            )}
+                            <button className="a">
+                              <Link
+                                label="AJOUTER UN BIEN"
+                                url="/"
+                                className="text-black"
+                              />
+                            </button>
+                            <button className="a">
+                              <Link
+                                label="MES INFORMATIONS"
+                                url="/profil"
+                                className="text-black"
+                              />
+                            </button>
+                            <button
+                              onClick={handleLogout}
+                              className="a text-black"
+                              id="logout"
+                            >
+                              DECONNEXION
+                            </button>
+                          </div>
+                        </div>
                       )}
                     </div>
                   </div>
