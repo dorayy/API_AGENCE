@@ -18,8 +18,6 @@ export default function NavbarCryptolyse({ children }) {
     window.location.reload();
   };
 
-  console.log(user);
-
   return (
     <>
       <div className="fixed z-50 w-full mt-5 m-auto flex items-center justify-center">

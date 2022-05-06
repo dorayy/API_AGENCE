@@ -31,7 +31,7 @@ class MeetupModel extends DefaultModel
 
     public function updateMeetup(int $id, array $updatedMeetup)
     {
-        $stmt = "UPDATE $this->table SET email=:email, telephone=:telephone, nom=:nom, prenom=:prenom WHERE annonce_id=$id";
+        $stmt = "UPDATE $this->table SET email=:email, telephone=:telephone, date=:date WHERE annonce_id=$id";
         $prepare = $this->pdo->prepare($stmt);
 
         if ($prepare->execute($updatedMeetup)) {

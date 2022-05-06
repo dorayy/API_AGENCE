@@ -133,6 +133,7 @@ class MeetupControlleur extends DefaultControlleur
                     new OA\Property(property: "telephone", type: "string"),
                     new OA\Property(property: "nom", type: "int"),
                     new OA\Property(property: "prenom", type: "int"),
+                    new OA\Property(property: "date", type: "int")
                 ]
             )
         ),

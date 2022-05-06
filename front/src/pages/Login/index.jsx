@@ -60,6 +60,7 @@ const LoginPage = () => {
         <div className="w-6/12 h-full flex justify-center items-center">
           <img
             src={Login}
+            alt=""
             className="h-full w-full flex justify-center items-center"
           />
         </div>
