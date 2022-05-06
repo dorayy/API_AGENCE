@@ -97,8 +97,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="py-10 flex flex-col justify-center items-center w-full bg-gray-200">
-        <h3 className="text-center text-5xl font-semibold mt-5 mb-5">
+      <div className="py-20 flex flex-col justify-center items-center w-full bg-gray-200">
+        <h3 className="text-center text-5xl font-semibold mt-5 mb-10">
           Qui sommes-nous ?
         </h3>
         <p className="w-6/12 text-lg text-center">

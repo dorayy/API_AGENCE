@@ -20,6 +20,10 @@ body {
   z-index: 666 !important;
 }
 
+#addAnnonce {
+  padding: 1rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

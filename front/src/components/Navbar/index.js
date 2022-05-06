@@ -91,7 +91,8 @@ export default function NavbarCryptolyse({ children }) {
                             </button>
                             <button
                               onClick={handleLogout}
-                              className="pad a text-black"
+                              className="a text-black"
+                              id="logout"
                             >
                               DECONNEXION
                             </button>

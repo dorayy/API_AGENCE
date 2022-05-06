@@ -34,11 +34,8 @@ const Profile = () => {
             src={Ellipse}
             className="absolute w-90 h-90 bottom-12 right-64"
           />
-          <form
-            className="absolute w-full p-4 flex flex-col justify-center rounded-2xl bg-white"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <div className="w-3/12 flex flex-col justify-center items-start">
+          <form className="w-3/12" onSubmit={handleSubmit(onSubmit)}>
+            <div className="w-full flex flex-col justify-center items-start">
               <label>Nom d'utilisateur</label>
               <input
                 {...register("username")}

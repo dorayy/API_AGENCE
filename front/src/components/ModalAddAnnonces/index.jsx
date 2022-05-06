@@ -49,7 +49,12 @@ const ModalAddAnnonces = () => {
 
   return (
     <div>
-      <button type="button" className="a text-black pad" onClick={toggleModal}>
+      <button
+        type="button"
+        className="a text-black"
+        id="addAnnonce"
+        onClick={toggleModal}
+      >
         AJOUTER UN BIEN
       </button>
       {modal && (
@@ -83,7 +88,7 @@ const ModalAddAnnonces = () => {
               type="text"
               name="prix"
               value={prix}
-              placeholder="prix"
+              placeholder="Prix"
               className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
@@ -117,7 +122,7 @@ const ModalAddAnnonces = () => {
               type="text"
               name="typedebien"
               value={typedebien}
-              placeholder="typedebien"
+              placeholder="Type de bien"
               className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
@@ -129,7 +134,7 @@ const ModalAddAnnonces = () => {
               type="text"
               name="typedecontrat"
               value={typedecontrat}
-              placeholder="typedecontrat"
+              placeholder="Type de contrat"
               className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
@@ -139,27 +144,27 @@ const ModalAddAnnonces = () => {
               {...register("superficie")}
               onChange={(e) => setSuperficie(e.target.value)}
               type="number"
-              name="superficie"
+              name="Superficie"
               value={superficie}
-              placeholder="superficie"
+              placeholder="Superficie"
               className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
               required
             />
-            <button
+            {/* <button
               onClick={addOptions}
-              class="rounded bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              class="rounded-2xl bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
               + Options
             </button>
-            {/* {options.map((option, key) => {
+            {options.map((option, key) => {
               return (
                 <div key={key}>
                   <label>Superficie</label>
                   <input
-                    {...register(`${options[key]}`)}
-                    onChange={(e) => setOptions(e.target.value)}
+                    // {...register(`${options[key]}`)}
+                    // onChange={(e) => setOptions(e.target.value)}
                     type="text"
-                    value={options[key]}
+                    // value={options[key]}
                     placeholder="nom"
                     className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
                     required
