@@ -85,6 +85,17 @@ class Annonce implements JsonSerializable
     )]
     private string $superficie;
 
+    #[OA\Property(
+        type: "array",
+        nullable: false,
+        example: [
+            "jardin" => false,
+            "cheminer" => false,
+            "balcon" => true
+        ]
+    )]
+    private string $options;
+
     /**
      * Get the value of id
      */
@@ -264,6 +275,19 @@ class Annonce implements JsonSerializable
         return $this;
     }
 
+    public function getOptions()
+    {
+        $options = json_decode($this->options, true);
+        return $options;
+    }
+
+    public function setOptions(string $options): self
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
     public function jsonSerialize(): mixed
     {
         return [
@@ -276,7 +300,8 @@ class Annonce implements JsonSerializable
             "user_id" => $this->user_id,
             "type_bien" => $this->type_bien,
             "type_contrat" => $this->type_contrat,
-            "superficie" => $this->superficie
+            "superficie" => $this->superficie,
+            "options" => $this->getOptions()
         ];
     }
 }
