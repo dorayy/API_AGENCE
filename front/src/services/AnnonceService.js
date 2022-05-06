@@ -67,6 +67,18 @@ class AnnonceService {
         return error.response.status;
       });
   }
+
+  getEmailAgentByAnnonce(id) {
+    return api
+      .get(`/annonce/${id}/emailagent?apikey=123456`)
+      .then((response) => {
+        const { email } = response.data[0];
+        return email;
+      })
+      .catch((error) => {
+        return error.response.status;
+      });
+  }
 }
 
 export default new AnnonceService();

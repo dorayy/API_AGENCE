@@ -20,6 +20,23 @@ class MeetupService {
         return error.response.status;
       });
   }
+  addMeetup(id, body) {
+    const data = qs.stringify(body);
+    return api({
+      method: "post",
+      url: `/annonce/${id}/meetup?apikey=123456`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data,
+    })
+      .then((response) => {
+        return response.status;
+      })
+      .catch((error) => {
+        return error.response.status;
+      });
+  }
 
   updateMeetup(id, email, telephone, date) {
     const data = qs.stringify({

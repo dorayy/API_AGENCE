@@ -92,4 +92,25 @@ final class AnnonceModel extends DefaultModel
             $this->jsonResponse("Erreur lors de l'update de l'announce $id", 400);
         }
     }
+
+
+    /**
+     * Retourne le mail de l'agent par rapport à l'id annonce
+     * @param int $annonce
+     * 
+     * @return array
+     */
+
+    public function findAgentByAnnonceId(int $annonce_id): array
+    {
+        try {
+            $stmt = "SELECT user.email FROM user  LEFT JOIN $this->table ON user.id = annonces.user_id  WHERE annonces.id = $annonce_id;";
+            $query = $this->pdo->query($stmt);
+
+            return $query->fetchAll();
+        } catch (\PDOException $e) {
+            $this->jsonResponse($e->getMessage(), 400);
+        }
+        return [];
+    }
 }

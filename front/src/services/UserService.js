@@ -41,7 +41,6 @@ class UserService {
         return error.response.status;
       });
   }
-  // TODO: Ajoute l'utilisateur
   addUser(email, password, username) {
     const data = qs.stringify({
       email,

@@ -27,8 +27,8 @@ TODO:
     - [] (à mettre en bdd) les options qui sont liées
     - [x] formulaire de contact
       - [x] un input pour une date de rendez-vous.
-      - [ ] (en front)envoyer un mail à l'agent immobilier gérant le bien
-      - [X] stocker ce rdv en base de données (on ne gère pas le planning dans ce tp, ce n'est pas grave s'il y a 2 rendez-vous en même temps).
+      - [x] (en front)envoyer un mail à l'agent immobilier gérant le bien
+      - [x] stocker ce rdv en base de données (on ne gère pas le planning dans ce tp, ce n'est pas grave s'il y a 2 rendez-vous en même temps).
 - [ ] Connexion
   - [ ] Ils peuvent se rendre sur sa fiche pour modifier son mot de passe et ses informations.
   - [x] Les agents immobiliers peuvent se connecter.
@@ -42,13 +42,13 @@ TODO:
   - [ ] le supprimer.
   - [x] Ils pourront également consulter leurs rendez-vous
     - [x] pages mes rdv
-  - [X] et les supprimez au besoin.
-- [X] Inscription
+  - [x] et les supprimez au besoin.
+- [x] Inscription
   - [x] bouton inscription
   - [x] Seul le gérant de l'agence peut inscrire des personnes
   - [x] Il inscrira les agents immobiliers ou d'autres personnes.
-  - [X] Il attribue les rôles aux utilisateurs.
-  - [X] pages liste uttilisateur
+  - [x] Il attribue les rôles aux utilisateurs.
+  - [x] pages liste uttilisateur
 - [x] Les rôles
   - [x] Anonyme
   - [x] Les clients ne s'inscrivent pas
@@ -56,7 +56,7 @@ TODO:
 
 BACK
 
-- [X] ROLE_USER
+- [x] ROLE_USER
   - [x] Ce rôle est dédié aux agents immobiliers.
   - [x] Ils peuvent consulter les biens,
   - [x] ajouter des biens
@@ -65,8 +65,8 @@ BACK
     - [x] suppression
     - [x] marqué comme vendu ou loué.
   - [x] Ils peuvent également consulter et gérer leurs render-vous.
-  - [X] Ils peuvent se rendre sur sa fiche pour modifier son mot de passe et ses informations.
-- [X] ROLE_ADMIN
+  - [x] Ils peuvent se rendre sur sa fiche pour modifier son mot de passe et ses informations.
+- [x] ROLE_ADMIN
   - [x] C'est le gérant de l'agence.
   - [x] Il voit tous les biens et peut tous les gérer.
   - [x] Il peut inscrire des collaborateurs
