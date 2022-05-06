@@ -296,4 +296,47 @@ class AnnonceControlleur extends DefaultControlleur
             $this->jsonResponse("Aucune donné pour créer un meet up", 400);
         }
     }
+
+    /**
+     * Récupere le mail du créateur d'annonce
+     * 
+     * @param int id
+     * 
+     * @return void
+     */
+
+    #[OA\Get(
+        path: "/api/v2/annonce/{id}/emailagent",
+        summary: "Retourne le mail du createur",
+        tags: ["Annonce"],
+        parameters: [new OA\Parameter(
+            name: "id",
+            in: "path",
+            description: "id",
+            required: true,
+
+        ), new OA\Parameter(
+            name: "apikey",
+            in: "query",
+            description: "apikey",
+            required: true,
+        )],
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: "Liste un mail",
+                content: new OA\JsonContent(
+                    type: 'array',
+                    items: new OA\Items(
+                        ref: '#/components/schemas/Annonce'
+                    )
+                )
+            )
+        ]
+    )]
+    public function emailAgent(int $id): void
+    {
+        //$user = $this->model->findAgentByAnnonceId($id);
+        $this->jsonResponse($this->model->findAgentByAnnonceId($id));
+    }
 }

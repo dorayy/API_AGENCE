@@ -37,10 +37,11 @@ CREATE TABLE annonces(
         description Varchar (250) NOT NULL ,
         images      Longtext NOT NULL ,
         vendu       Int NOT NULL,
-        user_id INT NOT NULL,
-        type_bien Varchar (250) NOT NULL ,
-        type_contrat Varchar (250) NOT NULL,
-		superficie      INT     NOT NULL
+        user_id         INT NOT NULL,
+        type_bien       Varchar (250) NOT NULL ,
+        type_contrat    Varchar (250) NOT NULL,
+	superficie      INT     NOT NULL,
+        options         Varchar(250)    NOT NULL
 	,CONSTRAINT annonces_PK PRIMARY KEY (id)
         ,CONSTRAINT annonce_user_FK FOREIGN KEY (user_id) REFERENCES user(id)
 )ENGINE=InnoDB;
@@ -77,13 +78,13 @@ INSERT INTO `user` (`id`, `username`, `email`, `roles`, `password`) VALUES
 -- Déchargement des données de la table `annonces`
 --
 
-INSERT INTO `annonces` (`id`, `titre`, `prix`, `description`, `images`, `vendu`, `user_id`, `type_bien`, `type_contrat`, `superficie` ) VALUES
-(1, 'annonces n°1' , 150000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",0,1,"Maison" ,"Achat", 100),
-(2, 'annonces n°2' , 250000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",0,1,"Maison" ,"Location", 90),
-(3, 'annonces n°3' , 350000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/126271/pexels-photo-126271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",1,2,"Appartement" ,"Location", 20),
-(4, 'annonces n°4' , 450000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",0,2,"Maison" ,"Location",150),
-(5, 'annonces n°5' , 550000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",1,3,"Appartement" ,"Achat",40),
-(6, 'annonces n°6' , 650000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/1838640/pexels-photo-1838640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",0,1,"Appartement" ,"Location",50);
+INSERT INTO `annonces` (`id`, `titre`, `prix`, `description`, `images`, `vendu`, `user_id`, `type_bien`, `type_contrat`, `superficie`, `options` ) VALUES
+(1, 'annonces n°1' , 150000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",0,1,"Maison" ,"Achat", 100, '{}'),
+(2, 'annonces n°2' , 250000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",0,1,"Maison" ,"Location", 90, '{}'),
+(3, 'annonces n°3' , 350000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/126271/pexels-photo-126271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",1,2,"Appartement" ,"Location", 20, '{}'),
+(4, 'annonces n°4' , 450000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",0,2,"Maison" ,"Location",150, '{}'),
+(5, 'annonces n°5' , 550000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",1,3,"Appartement" ,"Achat",40, '{}'),
+(6, 'annonces n°6' , 650000 , "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer maximus tincidunt ex. Etiam malesuada maximus rhoncus. Maecenas auctor elit consequat" , "https://images.pexels.com/photos/1838640/pexels-photo-1838640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",0,1,"Appartement" ,"Location",50, '{}');
 
 --
 -- Déchargement des données de la table `client`

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import RDV from "@components/ModalProduct";
+import ModalProduct from "@components/ModalProduct";
 import Footer from "@components/Footer";
 
 import AnnonceService from "@services/AnnonceService";
@@ -53,7 +53,7 @@ const Home = () => {
               </p>
 
               <hr className="mt-5 mb-5 h-px w-full bg-black" />
-              <RDV />
+              <ModalProduct idAnnonce={annonce.id} />
             </div>
           </div>
         </div>

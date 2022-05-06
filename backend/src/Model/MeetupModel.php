@@ -18,7 +18,7 @@ class MeetupModel extends DefaultModel
      */
     public function saveMeetup(array $meetup): ?int
     {
-        $stmt = "INSERT INTO $this->table (email, telephone, nom, prenom, annonce_id) VALUES (:email, :telephone, :nom, :prenom, :annonce_id)";
+        $stmt = "INSERT INTO $this->table (email, telephone, nom, prenom, annonce_id , date) VALUES (:email, :telephone, :nom, :prenom, :annonce_id , :date)";
         $prepare = $this->pdo->prepare($stmt);
 
         if ($prepare->execute($meetup)) {
