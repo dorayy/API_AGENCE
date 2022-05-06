@@ -13,7 +13,7 @@ const ModalRegister = ({ modal, setModal }) => {
   const handleClose = () => {
     console.log("close");
     toggleModal();
-    navigate("/");
+    navigate("/agents");
     window.location.reload();
   };
 

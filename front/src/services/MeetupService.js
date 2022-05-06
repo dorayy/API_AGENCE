@@ -27,7 +27,7 @@ class MeetupService {
       telephone,
       date,
     });
-    console.log(data);
+
     return api({
       method: "put",
       url: `/meetup/${id}?apikey=123456`,
