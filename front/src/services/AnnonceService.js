@@ -34,19 +34,26 @@ class AnnonceService {
         return error.response.status;
       });
   }
-  // TODO: Ajoute l'annonce
-  addAnnonce(annonce) {
-    return api
-      .post("/annonce?apikey=123456", { annonce })
+  addAnnonce(body) {
+    const data = qs.stringify(body);
+    console.log("data:", data);
+    return api({
+      method: "post",
+      url: `/annonce?apikey=123456`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        token: JSON.parse(localStorage.getItem("token")),
+      },
+      data,
+    })
       .then((response) => {
-        return response.data;
+        console.log("response:", response.data);
+        return response.status;
       })
       .catch((error) => {
         return error.response.status;
       });
   }
-  // TODO: Mise à jour de l'annonce
-
   updateAnnonce(id, body) {
     const data = qs.stringify(body);
 

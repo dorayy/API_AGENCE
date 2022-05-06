@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import Link from "./Link";
 import Contact from "@components/ModalMail";
+import ModalAddAnnonces from "@components/ModalAddAnnonces";
 import "./style.css";
 
 export default function NavbarCryptolyse({ children }) {
@@ -80,13 +81,7 @@ export default function NavbarCryptolyse({ children }) {
                                 />
                               </button>
                             )}
-                            <button className="a">
-                              <Link
-                                label="AJOUTER UN BIEN"
-                                url="/"
-                                className="text-black"
-                              />
-                            </button>
+                            <ModalAddAnnonces />
                             <button className="a">
                               <Link
                                 label="MES INFORMATIONS"
@@ -96,8 +91,7 @@ export default function NavbarCryptolyse({ children }) {
                             </button>
                             <button
                               onClick={handleLogout}
-                              className="a text-black"
-                              id="logout"
+                              className="pad a text-black"
                             >
                               DECONNEXION
                             </button>
