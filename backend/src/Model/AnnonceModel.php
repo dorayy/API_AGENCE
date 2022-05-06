@@ -41,7 +41,7 @@ final class AnnonceModel extends DefaultModel
      */
     public function saveAnnonce(array $annonce): ?int
     {
-        $stmt = "INSERT INTO $this->table (titre, prix, description, images, vendu, user_id , type_bien , type_contrat) VALUES (:titre, :prix, :description, :images, :vendu, :user_id , :type_bien , :type_contrat)";
+        $stmt = "INSERT INTO $this->table (titre, prix, description, images, vendu, user_id , type_bien , type_contrat, superficie) VALUES (:titre, :prix, :description, :images, :vendu, :user_id , :type_bien , :type_contrat, :superficie)";
         $prepare = $this->pdo->prepare($stmt);
 
         if ($prepare->execute($annonce)) {
@@ -83,7 +83,7 @@ final class AnnonceModel extends DefaultModel
      */
     public function updateAnnonce(int $id, array $updatedAnnounce)
     {
-        $stmt = "UPDATE $this->table SET titre=:titre, prix=:prix, description=:description , images=:images , vendu=:vendu , type_bien=:type_bien , type_contrat=:type_contrat WHERE id = $id;";
+        $stmt = "UPDATE $this->table SET titre=:titre, prix=:prix, description=:description , images=:images , vendu=:vendu , type_bien=:type_bien , type_contrat=:type_contrat, superficie=:superficie WHERE id = $id;";
         $prepare = $this->pdo->prepare($stmt);
 
         if ($prepare->execute($updatedAnnounce)) {

@@ -6,6 +6,7 @@ const Filter = () => {
   const [typeBien, setTypeBien] = useState("");
   const [typeContrat, setTypeContrat] = useState("");
   const [budget, setBudget] = useState("");
+  const [superficie, setSuperficie] = useState("");
 
   const handleTypeBienChange = (e) => {
     setTypeBien(e.target.value);
@@ -19,14 +20,20 @@ const Filter = () => {
     setBudget(e.target.value);
   };
 
+  const handleSuperficieChange = (e) => {
+    setSuperficie(e.target.value);
+  };
+
   const handleResearch = () => {
     navigate(
       "/articles?Bien=" +
-        typeBien +
-        "&Contrat=" +
-        typeContrat +
-        "&Budget=" +
-        budget
+      typeBien +
+      "&Contrat=" +
+      typeContrat +
+      "&Budget=" +
+      budget +
+      "&Superficie=" +
+      superficie
     );
   };
 
@@ -73,6 +80,7 @@ const Filter = () => {
             max="10000000"
             placeholder="Budget en €"
             className=" w-24 p-3 rounded-2xl border-2 border-blue-500"
+            onChange={handleBudgetChange}
           />
           <input
             type="number"
@@ -80,7 +88,7 @@ const Filter = () => {
             max="5000"
             placeholder="Superficie en m²"
             className=" w-24 p-3 rounded-2xl border-2 border-blue-500"
-            onChange={handleBudgetChange}
+            onChange={handleSuperficieChange}
           />
         </div>
         <button
