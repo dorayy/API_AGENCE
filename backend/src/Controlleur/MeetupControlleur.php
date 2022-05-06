@@ -2,6 +2,7 @@
 
 namespace App\Controlleur;
 
+use App\Model\AnnonceModel;
 use App\Model\MeetupModel;
 use Core\Controlleur\DefaultControlleur;
 use OpenApi\Attributes as OA;
@@ -152,8 +153,17 @@ class MeetupControlleur extends DefaultControlleur
     public function update(int $id, array $_PUT): void
     {
         $user = $this->isGranted(self::USER_ROLE);
-        $this->model->updateMeetup($id, $_PUT);
-        $this->jsonResponse($this->model->find($id));
+        $meetup = $this->model->find($id);
+
+        $customAnnonceModel = new AnnonceModel();
+        $annonce = $customAnnonceModel->find($meetup->getAnnonceId());
+
+        if ($annonce->getUserId() == $user["id"]) {
+            $this->model->updateMeetup($id, $_PUT);
+            $this->jsonResponse($this->model->find($id));
+        } else {
+            $this->jsonResponse("Vous ne pouvez pas delete ce meetup", 400);
+        }
     }
 
     /**
@@ -192,10 +202,19 @@ class MeetupControlleur extends DefaultControlleur
     public function delete(int $id): void
     {
         $user = $this->isGranted(self::USER_ROLE);
-        if ($this->model->delete($id)) {
-            $this->jsonResponse("Le Meetup a bien été delete");
+        $meetup = $this->model->find($id);
+
+        $customAnnonceModel = new AnnonceModel();
+        $annonce = $customAnnonceModel->find($meetup->getAnnonceId());
+
+        if ($annonce->getUserId() == $user["id"]) {
+            if ($this->model->delete($id)) {
+                $this->jsonResponse("Le Meetup a bien été delete");
+            } else {
+                $this->jsonResponse("La suppréssion du meetup a échouer", 400);
+            }
         } else {
-            $this->jsonResponse("La suppréssion du meetup a échouer", 400);
+            $this->jsonResponse("Vous ne pouvez pas delete ce meetup", 400);
         }
     }
 }
