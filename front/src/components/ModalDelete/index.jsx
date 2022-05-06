@@ -2,12 +2,21 @@ import React, { useState } from "react";
 
 import Close from "@assets/images/close.svg";
 import Delete from "@assets/images/delete.svg";
+import MeetupService from "@services/MeetupService";
 
-const Contact = () => {
+const Contact = ({ id }) => {
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {
     setModal(!modal);
+  };
+
+  const handleClick = async () => {
+    const status = await MeetupService.deleteMeetup(id);
+    if (status === 200) {
+      toggleModal();
+      window.location.reload();
+    }
   };
 
   return (
@@ -40,7 +49,7 @@ const Contact = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={toggleModal}
+                  onClick={handleClick}
                   className="ml-5 bg-red-600 px-4 py-2 rounded-2xl text-white"
                 >
                   Supprimer
