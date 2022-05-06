@@ -16,22 +16,29 @@ const Filter = () => {
   };
 
   const handleBudgetChange = (e) => {
-    setBudget(e.target.value)
-  }
+    setBudget(e.target.value);
+  };
 
   const handleResearch = () => {
-    navigate("/articles?Bien=" + typeBien + "&Contrat=" + typeContrat + "&Budget=" + budget);
-  }
+    navigate(
+      "/articles?Bien=" +
+        typeBien +
+        "&Contrat=" +
+        typeContrat +
+        "&Budget=" +
+        budget
+    );
+  };
 
   return (
-    <div className="w-4/5 h-60 rounded-2xl shadow-xl shadow-blue-500/50 bg-white p-4">
+    <div className="w-full h-60 rounded-2xl shadow-xl shadow-blue-500/50 bg-white p-4">
       <div className="w-full h-full flex flex-col justify-center items-center">
         <h6 className="mb-5 text-lg font-semibold text-black">
           Affinez votre recherche
         </h6>
         <div className="w-full flex justify-between items-center">
           <select
-            className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+            className=" w-24 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
             defaultValue=""
             onChange={handleTypeBienChange}
           >
@@ -46,7 +53,7 @@ const Filter = () => {
             </option>
           </select>
           <select
-            className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+            className=" w-24 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
             defaultValue=""
             onChange={handleTypeContratChange}
           >
@@ -65,12 +72,19 @@ const Filter = () => {
             min="100"
             max="10000000"
             placeholder="Budget en €"
-            className=" w-32 p-3 rounded-2xl border-2 border-blue-500"
+            className=" w-24 p-3 rounded-2xl border-2 border-blue-500"
+          />
+          <input
+            type="number"
+            min="10"
+            max="5000"
+            placeholder="Superficie en m²"
+            className=" w-24 p-3 rounded-2xl border-2 border-blue-500"
             onChange={handleBudgetChange}
           />
         </div>
         <button
-          className="h-12 w-2/6 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
+          className="h-12 w-80 mt-5 text-white rounded-2xl bg-blue-500 shadow-lg shadow-blue-500/50"
           onClick={handleResearch}
         >
           Rechercher

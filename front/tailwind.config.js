@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
+        24: "24%",
         32: "32%",
         95: "95%",
         500: "500px",
