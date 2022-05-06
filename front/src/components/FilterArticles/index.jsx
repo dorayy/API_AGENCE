@@ -3,10 +3,12 @@ import React from "react";
 const Filter = ({
   Bien = "",
   Contrat = "",
-  Budget = 0,
-  onChangeBien = () => {},
-  onChangeContrat = () => {},
-  onChangeBudget = () => {},
+  Budget = "",
+  Superficie = 0,
+  onChangeBien = () => { },
+  onChangeContrat = () => { },
+  onChangeBudget = () => { },
+  onChangeSuperficie = () => { },
 }) => {
   const typeBien = ["Maison", "Appartement"];
   const typeContrat = ["Achat", "Location"];
@@ -70,6 +72,8 @@ const Filter = ({
               max="5000"
               placeholder="Superficie en m²"
               className="w-full p-3 rounded-2xl border-2 border-blue-500"
+              onChange={onChangeSuperficie}
+              value={Superficie}
             />
           </div>
         </div>

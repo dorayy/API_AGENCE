@@ -9,7 +9,8 @@ const Articles = () => {
   const [annonces, setAnnonces] = useState([]);
   const [typeBien, setTypeBien] = useState("");
   const [typeContrat, setTypeContrat] = useState("");
-  const [budget, setBudget] = useState(0);
+  const [budget, setBudget] = useState("");
+  const [superficie, setSuperficie] = useState("");
 
   const navigate = useNavigate();
 
@@ -34,6 +35,9 @@ const Articles = () => {
     if (urlParams.get("Budget") && urlParams.get("Budget")) {
       setBudget(urlParams.get("Budget"));
     }
+    if (urlParams.get("Superficie") && urlParams.get("Superficie")) {
+      setSuperficie(urlParams.get("Superficie"));
+    }
     fetchData();
   }, []);
 
@@ -49,6 +53,10 @@ const Articles = () => {
     setBudget(e.target.value);
   };
 
+  const handleChangeSuperficie = (e) => {
+    setSuperficie(e.target.value);
+  };
+
   return (
     <>
       <div className="w-full min-h-screen flex flex-col justify-start items-center pt-36 pb-10">
@@ -57,9 +65,11 @@ const Articles = () => {
             Bien={typeBien}
             Contrat={typeContrat}
             Budget={budget}
+            Superficie={superficie}
             onChangeBien={handleTypeBienChange}
             onChangeContrat={handleTypeContratChange}
             onChangeBudget={handleChangeBudget}
+            onChangeSuperficie={handleChangeSuperficie}
           />
         </div>
         <div className="mt-10 w-4/5 pb-10 flex justify-center items-center">
@@ -89,6 +99,13 @@ const Articles = () => {
                 if (budget === 0 || budget === "") {
                   return data;
                 } else if (data.prix <= budget) {
+                  return data;
+                }
+              })
+              .filter((data) => {
+                if (superficie === 0 || superficie === "") {
+                  return data;
+                } else if (data.superficie >= superficie) {
                   return data;
                 }
               })
