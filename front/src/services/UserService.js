@@ -4,8 +4,14 @@ import qs from "qs";
 class UserService {
   // Recupère tout les utilisateurs
   getAllUser() {
+    const token = localStorage.getItem("token").replaceAll('"', "");
+
     return api
-      .get("/user?apikey=123456")
+      .get("/user?apikey=123456", {
+        headers: {
+          token: token,
+        },
+      })
       .then((response) => {
         return response.data;
       })
@@ -59,11 +65,19 @@ class UserService {
       });
   }
   // TODO: Mise à jour de l'utilisateur
-  updateUser(id) {
-    return api
-      .put(`/User/${id}?apikey=123456`)
+  updateUser(id, body) {
+    const data = qs.stringify(body);
+    return api({
+      method: "put",
+      url: `/user/${id}?apikey=123456`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        token: JSON.parse(localStorage.getItem("token")),
+      },
+      data,
+    })
       .then((response) => {
-        return response.data;
+        return response.status;
       })
       .catch((error) => {
         return error.response.status;
@@ -71,10 +85,15 @@ class UserService {
   }
   // TODO: Suppression de l'utilisateur
   deleteUser(id) {
+    const token = localStorage.getItem("token").replaceAll('"', "");
     return api
-      .delete(`/User/${id}?apikey=123456`)
+      .delete(`/User/${id}?apikey=123456`, {
+        headers: {
+          token: token,
+        },
+      })
       .then((response) => {
-        return response.data;
+        return response.status;
       })
       .catch((error) => {
         return error.response.status;

@@ -48,10 +48,17 @@ export default function NavbarCryptolyse({ children }) {
                           className="text-black p-2"
                         />
                       )}
+                      {user?.roles === 1 && (
+                        <Link
+                          label="MES AGENTS"
+                          url="/agents"
+                          className="text-black p-2"
+                        />
+                      )}
                     </div>
                     <div className="flex items-center">
                       <div className="mr-4 flex items-center">
-                        <Contact />
+                        {!token ? <Contact /> : <></>}
                       </div>
                       {!token ? (
                         <Link
