@@ -160,6 +160,8 @@ class UserControlleur extends DefaultControlleur
         if ($user["id"] = $id) {
             $this->model->updateUser($id, $_PUT);
             $this->jsonResponse($this->model->find($id));
+        } else {
+            $this->jsonResponse("Vous n'êtes pas l'utilisateur modifié", 400);
         }
     }
 
@@ -216,9 +218,13 @@ class UserControlleur extends DefaultControlleur
      */
     public function annonce(int $id): void
     {
-        $this->isGranted(self::USER_ROLE);
-        $customModel = new AnnonceModel();
-        $this->jsonResponse($customModel->findByUserId($id));
+        $user = $this->isGranted(self::USER_ROLE);
+        if ($user["id"] = $id) {
+            $customModel = new AnnonceModel();
+            $this->jsonResponse($customModel->findByUserId($id));
+        } else {
+            $this->jsonResponse("Vous n'êtes pas l'utilisateur concerné", 400);
+        }
     }
 
     /**
@@ -226,7 +232,7 @@ class UserControlleur extends DefaultControlleur
      */
     public function meetup(int $id): void
     {
-        $user = $this->isGranted(self::USER_ROLE);
+        $this->isGranted(self::USER_ROLE);
         $customAnnonceModel = new AnnonceModel();
         $customMeetupModel = new MeetupModel();
         $annonces = $customAnnonceModel->findByUserId($id);
@@ -287,6 +293,8 @@ class UserControlleur extends DefaultControlleur
             $user["roles"] = 0;
             $lastId = $this->model->saveUser($user);
             $this->jsonResponse($this->model->find($lastId));
+        } else {
+            $this->jsonResponse("Pas assez de donnée", 400);
         }
     }
 

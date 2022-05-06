@@ -215,9 +215,15 @@ class AnnonceControlleur extends DefaultControlleur
     )]
     public function update(int $id, array $_PUT): void
     {
-        $this->isGranted(self::USER_ROLE);
-        $this->model->updateAnnonce($id, $_PUT);
-        $this->jsonResponse($this->model->find($id));
+        $user = $this->isGranted(self::USER_ROLE);
+        $annonce = $this->model->find($id);
+        $userId = $annonce->getUserId();
+        if ($user["id"] == $userId) {
+            $this->model->updateAnnonce($id, $_PUT);
+            $this->jsonResponse($this->model->find($id));
+        } else {
+            $this->jsonResponse("Vous n'êtes pas le propriétaire de l'annonce", 400);
+        }
     }
 
     /**
@@ -255,9 +261,15 @@ class AnnonceControlleur extends DefaultControlleur
     )]
     public function delete(int $id): void
     {
-        $this->isGranted(self::USER_ROLE);
-        if ($this->model->delete($id)) {
-            $this->jsonResponse("L'annonce a bien été delete");
+        $user = $this->isGranted(self::USER_ROLE);
+        $annonce = $this->model->find($id);
+        $userId = $annonce->getUserId();
+        if ($user["id"] == $userId) {
+            if ($this->model->delete($id)) {
+                $this->jsonResponse("L'annonce a bien été delete");
+            } else {
+                $this->jsonResponse("La suppréssion de l'annonce a échouer", 400);
+            }
         } else {
             $this->jsonResponse("La suppréssion de l'annonce a échouer", 400);
         }

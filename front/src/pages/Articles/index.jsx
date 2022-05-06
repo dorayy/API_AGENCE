@@ -51,8 +51,8 @@ const Articles = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen flex flex-col justify-center items-center pt-36 pb-10">
-        <div className="w-4/5 flex justify-center items-center">
+      <div className="w-full min-h-screen flex flex-col justify-start items-center pt-36 pb-10">
+        <div className="w-4/5 h-full flex justify-center items-center">
           <FilterArticles
             Bien={typeBien}
             Contrat={typeContrat}
@@ -88,9 +88,7 @@ const Articles = () => {
               .filter((data) => {
                 if (budget === 0 || budget === "") {
                   return data;
-                } else if (
-                  data.prix <= budget
-                ) {
+                } else if (data.prix <= budget) {
                   return data;
                 }
               })
