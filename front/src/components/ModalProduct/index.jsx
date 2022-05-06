@@ -19,7 +19,7 @@ const ModalProduct = ({ idAnnonce }) => {
       telephone: formData.telephone,
       date,
     };
-    console.log(data);
+
     const status = await MeetupService.addMeetup(idAnnonce, data);
     const email = await AnnonceService.getEmailAgentByAnnonce(idAnnonce);
     if (status === 200) {

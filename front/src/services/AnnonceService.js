@@ -1,5 +1,5 @@
 import { api } from "@utils/axios";
-
+import qs from "qs";
 class AnnonceService {
   // Recupère toute les annonces
   getAllAnnonce() {
@@ -46,11 +46,22 @@ class AnnonceService {
       });
   }
   // TODO: Mise à jour de l'annonce
-  updateAnnonce(id) {
-    return api
-      .put(`/annonce/${id}?apikey=123456`)
+
+  updateAnnonce(id, body) {
+    const data = qs.stringify(body);
+
+    console.log(data);
+    return api({
+      method: "put",
+      url: `/annonce/${id}/update?apikey=123456`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        token: JSON.parse(localStorage.getItem("token")),
+      },
+      data,
+    })
       .then((response) => {
-        return response.data;
+        return response.status;
       })
       .catch((error) => {
         return error.response.status;

@@ -126,7 +126,7 @@ const Articles = () => {
                       />
                     </div>
                     <div className="relative w-6/12 h-300 flex justify-center items-center">
-                      <ModalEditAnnonces />
+                      <ModalEditAnnonces annonce={annonce} />
                       <div className="w-4/5 p-0 flex flex-col justify-start items-start">
                         <h6 className="text-xl text-left first-letter:uppercase">
                           {annonce.titre}
