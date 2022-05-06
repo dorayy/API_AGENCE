@@ -44,7 +44,7 @@ final class UserModel extends DefaultModel
      */
     public function updateUser(int $id, array $updatedUser)
     {
-        $stmt = "UPDATE $this->table SET username=:username, email=:email, roles=:roles WHERE id = $id;";
+        $stmt = "UPDATE $this->table SET username=:username, email=:email, roles=:roles, password=:password WHERE id = $id;";
         $prepare = $this->pdo->prepare($stmt);
 
         if ($prepare->execute($updatedUser)) {
