@@ -1,4 +1,5 @@
 import { api } from "@utils/axios";
+import qs from "qs";
 
 class UserService {
   // Recupère tout les utilisateurs
@@ -35,14 +36,26 @@ class UserService {
       });
   }
   // TODO: Ajoute l'utilisateur
-  addUser(User) {
-    return api
-      .post("/user?apikey=123456", { User })
-      .then((response) => {
-        return response.data;
+  addUser(email, password, username) {
+    const data = qs.stringify({
+      email,
+      password,
+      username,
+    });
+    return api({
+      method: "post",
+      url: "/user?apikey=123456",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        token: JSON.parse(localStorage.getItem("token")),
+      },
+      data,
+    })
+      .then(function (response) {
+        return response.status;
       })
-      .catch((error) => {
-        return error.response.status;
+      .catch(function (error) {
+        console.log(error);
       });
   }
   // TODO: Mise à jour de l'utilisateur
