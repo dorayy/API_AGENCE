@@ -25,6 +25,7 @@ class AnnonceControlleur extends DefaultControlleur
     #[OA\Get(
         path: "/api/v2/annonce",
         summary: "Retourne l'ensemble des annonces",
+        tags: ["Annonce"],
         parameters: [new OA\Parameter(
             name: "apikey",
             in: "query",
@@ -74,6 +75,7 @@ class AnnonceControlleur extends DefaultControlleur
     #[OA\Get(
         path: "/api/v2/annonce/{id}",
         summary: "Retourne une annonce par son identifiant",
+        tags: ["Annonce"],
         parameters: [new OA\Parameter(
             name: "id",
             in: "path",
@@ -111,6 +113,7 @@ class AnnonceControlleur extends DefaultControlleur
      */
     #[OA\Post(
         path: "/api/v2/annonce/save",
+        tags: ["Annonce"],
         parameters: [new OA\Parameter(
             name: "apikey",
             in: "query",
@@ -166,6 +169,7 @@ class AnnonceControlleur extends DefaultControlleur
 
     #[OA\Put(
         path: "/api/v2/annonce/{id}/update",
+        tags: ["Annonce"],
         parameters: [
             new OA\Parameter(
                 name: "id",
@@ -231,6 +235,7 @@ class AnnonceControlleur extends DefaultControlleur
     #[OA\Delete(
         path: "/api/v2/annonce/{id}/delete",
         summary: "Supprime une annonce par son identifiant",
+        tags: ["Annonce"],
         parameters: [new OA\Parameter(
             name: "id",
             in: "path",

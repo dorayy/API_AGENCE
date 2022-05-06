@@ -21,6 +21,7 @@ final class ClientControlleur extends DefaultControlleur
     #[OA\Get(
         path: "/api/v2/client",
         summary: "Retourne l'ensemble des clients",
+        tags: ["Client"],
         parameters: [new OA\Parameter(
             name: "apikey",
             in: "query",
@@ -69,6 +70,7 @@ final class ClientControlleur extends DefaultControlleur
     #[OA\Get(
         path: "/api/v2/client/{id}",
         summary: "Retourne une client par son identifiant",
+        tags: ["Client"],
         parameters: [new OA\Parameter(
             name: "id",
             in: "path",
@@ -103,6 +105,7 @@ final class ClientControlleur extends DefaultControlleur
 
     #[OA\Post(
         path: "/api/v2/client/save",
+        tags: ["Client"],
         parameters: [new OA\Parameter(
             name: "apikey",
             in: "query",
