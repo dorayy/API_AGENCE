@@ -15,13 +15,13 @@ const Filter = ({
   const AddContrat = typeContrat.map((Add) => Add);
 
   return (
-    <div className="w-4/5">
+    <div className="w-full">
       <div className="w-full h-full flex flex-col justify-center items-center">
         <h2 className="text-4xl text-blue-500 mb-5">Filtrez les annonces</h2>
         <div className="w-full flex justify-between items-center">
           <select
             onChange={(e) => onChangeBien(e)}
-            className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+            className="w-24 p-3 rounded-2xl border-2 border-blue-500 text-gray-500 mt-6"
             value={Bien}
           >
             <option className="text-gray-500" key="default">
@@ -36,7 +36,7 @@ const Filter = ({
 
           <select
             onChange={(e) => onChangeContrat(e)}
-            className=" w-32 p-3 rounded-2xl border-2 border-blue-500 text-gray-500"
+            className=" w-24 p-3 rounded-2xl border-2 border-blue-500 text-gray-500 mt-6"
             value={Contrat}
           >
             <option className="text-gray-500" key="default1">
@@ -49,15 +49,29 @@ const Filter = ({
             ))}
           </select>
 
-          <input
-            type="number"
-            min="100"
-            max="10000000"
-            placeholder="Budget en €"
-            className="w-32 p-3 rounded-2xl border-2 border-blue-500"
-            onChange={onChangeBudget}
-            value={Budget}
-          />
+          <div className="w-24 flex flex-col justify-center items-center">
+            <label>Budget en €</label>
+            <input
+              type="number"
+              min="100"
+              max="10000000"
+              placeholder="Budget en €"
+              className="w-full p-3 rounded-2xl border-2 border-blue-500"
+              onChange={onChangeBudget}
+              value={Budget}
+            />
+          </div>
+
+          <div className="w-24 flex flex-col justify-center items-center">
+            <label>Superficie en m²</label>
+            <input
+              type="number"
+              min="12"
+              max="5000"
+              placeholder="Superficie en m²"
+              className="w-full p-3 rounded-2xl border-2 border-blue-500"
+            />
+          </div>
         </div>
       </div>
     </div>
