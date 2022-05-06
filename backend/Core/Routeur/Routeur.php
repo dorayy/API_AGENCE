@@ -55,7 +55,12 @@ class Routeur
                         case 'PUT':
                             parse_str(file_get_contents("php://input"), $_PUT);
                             if ($id && !empty($_PUT)) {
-                                $controlleur->update($id, $_PUT);
+                                if (isset($path[5]) && is_string($path[5])) {
+                                    $method = $path[5];
+                                    $controlleur->$method($id, $_PUT);
+                                } else {
+                                    $controlleur->update($id, $_PUT);
+                                }
                             } else {
                                 throw new \Exception("Erreur lors de la modification, il mannque des informations", 400);
                             }

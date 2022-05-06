@@ -109,3 +109,5 @@ INSERT INTO `meetup` (`id`, `date`, `annonce_id`, `email`, `telephone`, `nom`, `
 
 INSERT INTO `meetup` (`id`, `date`, `annonce_id`, `email`, `telephone`, `nom`, `prenom`) VALUES 
 (NULL, '1651748022', '2', 'louispoulin@gmail.com', '0700000000', 'Poulin', 'Louis');
+
+ALTER TABLE `annonces` CHANGE `type_bien` `type_bien` VARCHAR(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL, CHANGE `type_contrat` `type_contrat` VARCHAR(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL, CHANGE `superficie` `superficie` INT(11) NULL;

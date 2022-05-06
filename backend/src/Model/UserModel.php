@@ -55,6 +55,26 @@ final class UserModel extends DefaultModel
     }
 
     /**
+     * Update un mdp de la database
+     * 
+     * @param int $id
+     * @param array $user
+     * 
+     * @return void
+     */
+    public function updateMyInfos(int $id, array $myInfos)
+    {
+        $stmt = "UPDATE $this->table SET username=:username, email=:email, password=:password WHERE id = $id;";
+        $prepare = $this->pdo->prepare($stmt);
+
+        if ($prepare->execute($myInfos)) {
+            return true;
+        } else {
+            $this->jsonResponse("Erreur lors de l'update d'un user", 400);
+        }
+    }
+
+    /**
      * Supprime un utilisateur de la database
      * 
      * @param int $id

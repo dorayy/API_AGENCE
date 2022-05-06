@@ -345,4 +345,58 @@ class UserControlleur extends DefaultControlleur
             $this->jsonResponse("Cet utilisateur n'éxiste pas", 400);
         }
     }
+
+
+    #[OA\Put(
+        path: "/api/v2/user/{id}/updatemyinfos",
+        parameters: [
+            new OA\Parameter(
+                name: "id",
+                in: "path",
+                description: "id",
+                required: true,
+
+            ), new OA\Parameter(
+                name: "apikey",
+                in: "query",
+                description: "apikey",
+                required: true,
+            )
+        ],
+        requestBody: new OA\RequestBody(
+            request: "Maj de l'user",
+            required: true,
+            content: new OA\JsonContent(
+                properties: [
+                    new OA\Property(property: "username", type: "string"),
+                    new OA\Property(property: "email", type: "string"),
+                    new OA\Property(property: "password", type: "string"),
+
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: "Mis à jour",
+                content: new OA\JsonContent(
+                    type: 'array',
+                    items: new OA\Items(
+                        ref: '#/components/schemas/User'
+                    )
+                )
+            )
+        ]
+    )]
+    public function updatemyinfos(int $id, array $_PUT): void
+    {
+        $user = $this->isGranted(self::USER_ROLE);
+        if ($user["id"] = $id) {
+            $_PUT["password"] = password_hash($_PUT["password"], PASSWORD_DEFAULT);
+            $this->model->updateMyInfos($id, $_PUT);
+            $this->jsonResponse($this->model->find($id));
+        } else {
+            $this->jsonResponse("Vous n'êtes pas l'utilisateur modifié", 400);
+        }
+    }
 }

@@ -98,6 +98,26 @@ class UserService {
         return error.response.status;
       });
   }
+
+  updatemyinfos(id, body) {
+    const data = qs.stringify(body);
+    return api({
+      method: "put",
+      url: `/user/${id}/updatemyinfos?apikey=123456`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        token: JSON.parse(localStorage.getItem("token")),
+      },
+      data,
+    })
+      .then((response) => {
+        console.log("response:", response.data);
+        return response.status;
+      })
+      .catch((error) => {
+        return error.response.status;
+      });
+  }
 }
 
 export default new UserService();
