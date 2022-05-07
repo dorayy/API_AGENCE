@@ -31,8 +31,8 @@ export const Agents = () => {
                 <div className="w-full flex justify-between items-center">
                   <h6 className="text-lg">{user.username}</h6>
 
-                  <p>Rôles : {user.roles === 1 ? "Administrateur" : "Agent"}</p>
-                  <p>Email : {user.email}</p>
+                  <p> {user.roles === 1 ? "Administrateur" : "Agent"}</p>
+                  <p> {user.email}</p>
                   {
                     <div className="flex">
                       <ModalEditUser user={user} />

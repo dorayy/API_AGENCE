@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import AuthenticationService from "@services/AuthenticationService";
 import { useForm } from "react-hook-form";
@@ -10,15 +10,17 @@ import Login from "@assets/images/login.svg";
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
-
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     const status = await AuthenticationService.login(data.email, data.password);
 
-    if (status === 200) navigate("/liste-rdv");
+    if (status === 200) {
+      navigate("/liste-rdv");
+    } else {
+      alert("Mot de passe erroné");
+    }
   };
-
   return (
     <>
       <div className="w-full h-screen flex justify-center items-center">

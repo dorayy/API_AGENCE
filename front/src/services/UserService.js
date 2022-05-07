@@ -111,8 +111,7 @@ class UserService {
       data,
     })
       .then((response) => {
-        console.log("response:", response.data);
-        return response.status;
+        return response;
       })
       .catch((error) => {
         return error.response.status;

@@ -28,26 +28,25 @@ export const ListRdv = () => {
         <ul className="w-4/5 flex flex-col justify-center items-center">
           {annonces.map((annnonce) => {
             return annnonce.map((meetup) => {
-              let date = new Date(meetup.date);
+              let date = new Date(meetup.date * 1000);
+              date = date.toDateString();
               return (
-                <li className="w-full p-4 border-b-2 border-black">
-                  <div className="w-full flex justify-between items-center">
-                    <h6 className="text-lg">
-                      {meetup.prenom} {meetup.nom}
-                    </h6>
-                    <p>
-                      Rendez-vous le : {date.getDate()} {date.getMonth()}{" "}
-                      {date.getFullYear()} {date.getHours()}h{" "}
-                      {date.getMinutes()}m {date.getSeconds()}s
-                    </p>
-                    <p>Tél : {meetup.telephone}</p>
-                    <p>Email : {meetup.email}</p>
-                    <div className="flex">
-                      <ModalEditProduct data={meetup} />
-                      <ModalDelete id={meetup.id} />
+                <>
+                  <li className="w-full p-4 border-b-2 border-black">
+                    <div className="w-full flex justify-between items-center">
+                      <h6 className="text-lg">
+                        {meetup.prenom} {meetup.nom}
+                      </h6>
+                      <p>{date}</p>
+                      <p>{meetup.telephone}</p>
+                      <p>{meetup.email}</p>
+                      <div className="flex">
+                        <ModalEditProduct data={meetup} />
+                        <ModalDelete id={meetup.id} />
+                      </div>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                </>
               );
             });
           })}

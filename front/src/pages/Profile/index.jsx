@@ -8,6 +8,7 @@ import UserService from "@services/UserService";
 
 const Profile = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
 
@@ -19,9 +20,12 @@ const Profile = () => {
       email: formData.email,
       password: formData.password,
     };
-    const status = await UserService.updatemyinfos(user.id, data);
-    if (status === 200) {
+    const res = await UserService.updatemyinfos(user.id, data);
+    if (res.status === 200) {
       window.location.reload();
+      alert(
+        "Deconnecter et reconnecter vous pour bien prendre en compte la mis a jour"
+      );
     }
   };
 
@@ -61,7 +65,7 @@ const Profile = () => {
               <label>Mot de passe</label>
               <input
                 {...register("password")}
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Mot de passe"
                 className="w-full p-3 mt-2 mb-2 rounded-2xl border-2 border-blue-500"
