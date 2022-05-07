@@ -183,6 +183,33 @@ paths:
           description: Supprimé
         '404':
           description: 'Not Found'
+  '/api/v2/annonce/{id}/emailagent':
+    get:
+      tags:
+        - Annonce
+      summary: 'Retourne le mail du createur'
+      description: 'Récupere le mail du créateur d''annonce'
+      operationId: d337224793569dace526d7cbb9f8b769
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      responses:
+        '200':
+          description: 'Liste un mail'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Annonce'
   /api/v2/client:
     get:
       tags:
@@ -274,6 +301,8 @@ paths:
                   $ref: '#/components/schemas/Client'
   /api/v2/meetup:
     get:
+      tags:
+        - Meetup
       summary: 'Retourne l''ensemble des meetups'
       description: 'Retoure la liste des meetup'
       operationId: 0487d06ccadf844834785e185f3c1386
@@ -302,6 +331,8 @@ paths:
                 type: object
   '/api/v2/meetup/{id}':
     get:
+      tags:
+        - Meetup
       summary: 'Retourne un meetup par son identifiant'
       description: 'Retourne le meetup d''id donnée'
       operationId: cb54580a3f83fe9ed3ef80af08eb7577
@@ -327,6 +358,8 @@ paths:
                   $ref: '#/components/schemas/Meetup'
   '/api/v2/meetup/{id}/update':
     put:
+      tags:
+        - Meetup
       summary: 'Update un meetup'
       operationId: 97cafaea046fee1db794d331642ffb76
       parameters:
@@ -355,6 +388,8 @@ paths:
                   type: integer
                 prenom:
                   type: integer
+                date:
+                  type: integer
               type: object
       responses:
         '200':
@@ -367,6 +402,8 @@ paths:
                   $ref: '#/components/schemas/Meetup'
   '/api/v2/meetup/{id}/delete':
     delete:
+      tags:
+        - Meetup
       summary: 'Supprime un meetup par son identifiant'
       description: 'Supprime un meetup'
       operationId: 6513206937f4311ee5887ac249a7e48a
@@ -388,6 +425,8 @@ paths:
           description: 'Not Found'
   /api/v2/user:
     get:
+      tags:
+        - User
       summary: 'Retourne l''ensemble des utilisateurs'
       description: 'Retoure la liste des utilisateurs'
       operationId: f71c19e7e24bb6e63727bc79ed5dce95
@@ -416,6 +455,8 @@ paths:
                 type: object
   '/api/v2/user/{id}':
     get:
+      tags:
+        - User
       summary: 'Retourne un utilisateur par son identifiant'
       description: 'Retourne l''utilisateur d''id donnée'
       operationId: eba1cdd45269a8b821241271b5f52d84
@@ -441,6 +482,8 @@ paths:
                   $ref: '#/components/schemas/User'
   '/api/v2/user/{id}/update':
     put:
+      tags:
+        - User
       summary: 'Update un utilisateur'
       operationId: 06600d194e3b30853f631c64967484b5
       parameters:
@@ -479,6 +522,8 @@ paths:
                   $ref: '#/components/schemas/Annonce'
   '/api/v2/user/{id}/delete':
     delete:
+      tags:
+        - User
       summary: 'Supprime un utilisateur par son identifiant'
       description: 'Supprime un utilisateur'
       operationId: 353f67d4755e7e2d98d8402152aadef0
@@ -500,6 +545,8 @@ paths:
           description: 'Not Found'
   /api/v2/user/save:
     post:
+      tags:
+        - User
       summary: 'Créer un nouvelle utilisateur'
       operationId: 38eb4c0c9131ca32e13c1a8282b3122d
       parameters:
@@ -535,6 +582,8 @@ paths:
                   $ref: '#/components/schemas/User'
   /api/v2/user/login:
     post:
+      tags:
+        - User
       summary: 'Connexion de l''utilisateur'
       operationId: 4c336830d9f1c057867a45bfc28fee75
       parameters:
@@ -558,6 +607,45 @@ paths:
       responses:
         '200':
           description: Connected
+  '/api/v2/user/{id}/updatemyinfos':
+    put:
+      tags:
+        - User
+      operationId: db2bd35c15f0221d5247a5d50cd7c091
+      parameters:
+        -
+          name: id
+          in: path
+          description: id
+          required: true
+        -
+          name: apikey
+          in: query
+          description: apikey
+          required: true
+      requestBody:
+        request: 'Maj de l''user'
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Mis à jour'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
 components:
   schemas:
     Annonce:
@@ -599,6 +687,17 @@ components:
         type_contrat:
           type: string
           example: Achat
+          nullable: false
+        superficie:
+          type: integer
+          example: 25
+          nullable: false
+        options:
+          type: array
+          example:
+            jardin: false
+            cheminer: false
+            balcon: true
           nullable: false
       type: object
     Client:

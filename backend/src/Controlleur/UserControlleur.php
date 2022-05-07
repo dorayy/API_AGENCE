@@ -27,6 +27,7 @@ class UserControlleur extends DefaultControlleur
     #[OA\Get(
         path: "/api/v2/user",
         summary: "Retourne l'ensemble des utilisateurs",
+        tags: ["User"],
         parameters: [new OA\Parameter(
             name: "apikey",
             in: "query",
@@ -74,6 +75,7 @@ class UserControlleur extends DefaultControlleur
     #[OA\Get(
         path: "/api/v2/user/{id}",
         summary: "Retourne un utilisateur par son identifiant",
+        tags: ["User"],
         parameters: [new OA\Parameter(
             name: "id",
             in: "path",
@@ -115,6 +117,7 @@ class UserControlleur extends DefaultControlleur
 
     #[OA\Put(
         path: "/api/v2/user/{id}/update",
+        tags: ["User"],
         parameters: [
             new OA\Parameter(
                 name: "id",
@@ -176,6 +179,7 @@ class UserControlleur extends DefaultControlleur
     #[OA\Delete(
         path: "/api/v2/user/{id}/delete",
         summary: "Supprime un utilisateur par son identifiant",
+        tags: ["User"],
         parameters: [new OA\Parameter(
             name: "id",
             in: "path",
@@ -253,6 +257,7 @@ class UserControlleur extends DefaultControlleur
 
     #[OA\Post(
         path: "/api/v2/user/save",
+        tags: ["User"],
         parameters: [new OA\Parameter(
             name: "apikey",
             in: "query",
@@ -307,6 +312,7 @@ class UserControlleur extends DefaultControlleur
      */
     #[OA\Post(
         path: "/api/v2/user/login",
+        tags: ["User"],
         parameters: [new OA\Parameter(
             name: "apikey",
             in: "query",
@@ -349,6 +355,7 @@ class UserControlleur extends DefaultControlleur
 
     #[OA\Put(
         path: "/api/v2/user/{id}/updatemyinfos",
+        tags: ["User"],
         parameters: [
             new OA\Parameter(
                 name: "id",

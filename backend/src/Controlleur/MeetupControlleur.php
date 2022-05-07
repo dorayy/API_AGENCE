@@ -24,6 +24,7 @@ class MeetupControlleur extends DefaultControlleur
     #[OA\Get(
         path: "/api/v2/meetup",
         summary: "Retourne l'ensemble des meetups",
+        tags: ["Meetup"],
         parameters: [new OA\Parameter(
             name: "apikey",
             in: "query",
@@ -71,6 +72,7 @@ class MeetupControlleur extends DefaultControlleur
     #[OA\Get(
         path: "/api/v2/meetup/{id}",
         summary: "Retourne un meetup par son identifiant",
+        tags: ["Meetup"],
         parameters: [new OA\Parameter(
             name: "id",
             in: "path",
@@ -111,6 +113,7 @@ class MeetupControlleur extends DefaultControlleur
      */
     #[OA\Put(
         path: "/api/v2/meetup/{id}/update",
+        tags: ["Meetup"],
         parameters: [
             new OA\Parameter(
                 name: "id",
@@ -177,6 +180,7 @@ class MeetupControlleur extends DefaultControlleur
     #[OA\Delete(
         path: "/api/v2/meetup/{id}/delete",
         summary: "Supprime un meetup par son identifiant",
+        tags: ["Meetup"],
         parameters: [new OA\Parameter(
             name: "id",
             in: "path",
